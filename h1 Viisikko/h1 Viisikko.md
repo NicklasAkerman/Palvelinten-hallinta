@@ -46,12 +46,12 @@ Tässä Osiossa tein tiivistelmän kolmesta eri Tero Karvisen kirjoittamasta art
     - Viisi tärkeintä funtiota on pkg, file, service, user ja cmd
 
 2. Run Create a Web Page Using Github (Karvinen 2023) 
-    - Artikkelissa käydään aloittelijoille läpi hyvin yksityiskohtaisesti, kuinka GitHubiin voidaan julkaista julkinen sivu
-    1. kirjautuminen
-    2. Luodaan repository
-    3. Luodaan uusi tiedosto .md muodossa
-    4. Kirjoitetaan sisältö
-    5. Commit new file 
+    - Artikkelissa käydään aloittelijoille läpi hyvin yksityiskohtaisesti, kuinka GitHubiin voidaan julkaista julkinen sivu seuraavassa järjestyksessä:
+        1. kirjautuminen
+        2. Luodaan repository
+        3. Luodaan uusi tiedosto .md muodossa
+        4. Kirjoitetaan sisältö
+        5. Commit new file 
 
 3. Raportin kirjoittaminen (Karvinen 2006)  
     - Raporttia tulee kirjoittaa kokoajan samalla kun tekee
