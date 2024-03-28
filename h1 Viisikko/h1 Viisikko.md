@@ -210,12 +210,12 @@ Karvinen, T. 2023. Run Create a Web Page Using Github. Luettavissa: https://tero
 
 Karvinen, T. 2024. Infra as Code - Palvelinten hallinta 2024. Luettavissa: https://terokarvinen.com/2024/configuration-management-2024-spring/. Luettu: 28.3.2024.
 
-VNware 2024a. SALT.STATES.PKG. Luettavissa: https://docs.saltproject.io/en/latest/ref/states/all/salt.states.pkg.html. Luettu: 28.3.2024.
+VMware 2024a. SALT.STATES.PKG. Luettavissa: https://docs.saltproject.io/en/latest/ref/states/all/salt.states.pkg.html. Luettu: 28.3.2024.
 
-VNware 2024b. SALT.MODULES.FILE. Luettavissa: https://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.file.html. Luettu: 28.3.2024.
+VMware 2024b. SALT.MODULES.FILE. Luettavissa: https://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.file.html. Luettu: 28.3.2024.
 
-VNware 2024c. SALT.STATES.SERVICE. Luettavissa: https://docs.saltproject.io/en/latest/ref/states/all/salt.states.service.html. Luettu: 28.3.2024.
+VMware 2024c. SALT.STATES.SERVICE. Luettavissa: https://docs.saltproject.io/en/latest/ref/states/all/salt.states.service.html. Luettu: 28.3.2024.
 
-VNware 2024d. SALT.STATES.USER. Luettavissa: https://docs.saltproject.io/en/latest/ref/states/all/salt.states.user.html. Luettu: 28.3.2024.
+VMware 2024d. SALT.STATES.USER. Luettavissa: https://docs.saltproject.io/en/latest/ref/states/all/salt.states.user.html. Luettu: 28.3.2024.
 
-VNware 2024e. SALT.STATES.CMD. Luettavissa: https://docs.saltproject.io/en/latest/ref/states/all/salt.states.cmd.html. Luettu: 28.3.2024.
+VMware 2024e. SALT.STATES.CMD. Luettavissa: https://docs.saltproject.io/en/latest/ref/states/all/salt.states.cmd.html. Luettu: 28.3.2024.
