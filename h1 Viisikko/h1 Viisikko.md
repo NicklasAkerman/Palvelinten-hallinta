@@ -14,7 +14,7 @@ Sisällysluettelo/Viikon 1 tehtävälistaus:
     - [ user](#user)
     - [ cmd](#cmd)
 - f)[ Indempotentti](#f-indempotentti)
-- [Tietoa koneesta](#fyysinen-tietokone)
+- [Fyysinen tietokone](#fyysinen-tietokone)
 - [Lähdeluettelo](#lähteet)
 
 Kaikki tämän dokumentin tehtävät on saatu Tero Karvisen kurssisivulta(Karvinen 2024)
