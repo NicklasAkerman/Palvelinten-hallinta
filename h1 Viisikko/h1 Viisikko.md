@@ -102,7 +102,7 @@ Osiossa tuli asentaa salt virtuaalikoneelle, joten tämä on jatkoa suoraan C os
 ## e) Viisi tärkeintä
 Tehtävänä oli näyttää esimerkit ja analysoida niiden tulokset viidestä tärkeimmästä Salt funktiosta Linuxilla:`pkg`, `file`, `service`, `user` ja `cmd`. Kaikki komennot on Tero Karvisen artikkelista *Run Salt Command Locally*(Karvinen 2021)
 
-#### pkg
+### pkg
 Pkg komennon avulla voidaan hallinnoida pakettien asennusta (WMware 2024a).
 - Ajoin komennon `sudo salt-call --local -l info state.single pkg.installed tree` jonka tarkoituksena oli asentaa `tree`  
     ![ep1.png](ep1.png)
@@ -114,7 +114,7 @@ Pkg komennon avulla voidaan hallinnoida pakettien asennusta (WMware 2024a).
     >Summary for local = Kertoo onnistumiset ja epäonnistumiset  
     >Total states run = Montako asiaa tehtiin  
 
-#### file
+### file
 File komennon avulla hallinnoidaan tiedostoja (WMware 2024b).
 - Ajoin komennon `sudo salt-call --local -l info state.single file.managed /tmp/testikansio` joka luo kansioita  
     ![ef1.png](ef1.png)  
@@ -126,7 +126,7 @@ File komennon avulla hallinnoidaan tiedostoja (WMware 2024b).
     >Summary for local = Kertoo onnistumiset ja epäonnistumiset  
     >Total states run = Montako asiaa tehtiin  
 
-#### service
+### service
 Service komennon avulla voidaan määritellä palveluita päälle tai pois päältä (WMware 2024c).
 - Ajoin komennon `sudo salt-call --local -l info state.single service.running apache2 enable=True` jonka on tarkoitus käynnistää apache. Sitä ei ole asennettuna.  
     ![es1.png](es1.png)  
@@ -137,7 +137,7 @@ Service komennon avulla voidaan määritellä palveluita päälle tai pois pää
     >Changes = Ei muutoksia, koska mitään ei voitu tehdä  
     >Summary for local = Kertoo sen, että epäonnistuttiin  
 
-#### user
+### user
 User komennon avulla voidaan luoda ja hallita käyttäjäasetuksia (WMware 2024d).
 - Ajoin alkuun komennon `Sudo salt-call --local grains.item username` jotta saan selville käyttäjätunnuksen joka palautti `root`
 - Ajoin komennon `sudo salt-call --local -l info state.single user.present root`  
@@ -156,7 +156,7 @@ User komennon avulla voidaan luoda ja hallita käyttäjäasetuksia (WMware 2024d
 - Testasin onnistumisen luomalla käyttäjätunnukselle uuden kansion  
     ![eu3.png](eu3.png)  
 
-#### cmd
+### cmd
 Cmd komennon avulla voidaan hallinnoida komentojen suoritusta esimerkiksi tiettyjen ehtojen täytyttyä (WMware 2024e).
 - Ajoin komennon `sudo salt-call --local -l info state.single cmd.run 'touch /tmp/foo' creates="/tmp/foo"`  
     ![ec1.png](ec1.png)
