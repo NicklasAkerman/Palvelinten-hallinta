@@ -76,7 +76,7 @@ Osiossa oli tarkoitus näyttää, että olen onnistunut Saltin asentamisessa. Sa
 ## b) Hello Vagrant
 Osiossa oli tarkoitus näyttää, että onnistuin vagrantin asennuksessa. Olin asentanut Vagrantin ja bookwormin jo aiemmalla kurssilla, joten tunnilla asensin bullseyen. 
 1. Avasin Windows Poweshellin normaalina käyttäjänä
-2. ´cd bullseye´
+2. `cd bullseye`
 3. `vagrant up` <-- Käynnistin tietokoneen, tähän meni muutama minuutti
 4. `vagrant ssh` <-- Loin ssh yhteyden
 5. Tein uuden kansion, siirryin sinne jonka jälkeen poistuin `exit` komennolla ja tuhosin virtuaalikoneen komennolla `vagrant destroy`. Virtuaalikoneen tuhoamisesta varmistuin sillä, että se oli kadonnut virtualboxista.  
