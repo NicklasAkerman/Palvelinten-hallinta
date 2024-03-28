@@ -87,7 +87,7 @@ Osiossa oli tarkoitus näyttää, että onnistuin vagrantin asennuksessa. Olin a
 ## c) Uusi virtuaalikone vagrantilla
 Tehtävänä oli asentaa uusi virtuaalikone Vagrantilla, joka onnistui seuraavin askelin:  
 1. Avasin Windows Poweshellin normaalina käyttäjänä
-2. ´cd bullseye´
+2. `cd bullseye`
 3. `vagrant up` <-- Käynnistin tietokoneen, tähän meni muutama minuutti
 4. Tällä kertaa varmistin asennuksen katsomalla, että se oli tullut virtualboxiin  
     ![c1.png](c1.png)
