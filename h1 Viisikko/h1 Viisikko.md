@@ -106,65 +106,65 @@ Tehtävänä oli näyttää esimerkit ja analysoida niiden tulokset viidestä t�
 Pkg komennon avulla voidaan hallinnoida pakettien asennusta (WMware 2024a).
 - Ajoin komennon `sudo salt-call --local -l info state.single pkg.installed tree` jonka tarkoituksena oli asentaa `tree`  
     ![ep1.png](ep1.png)
-    >ID: tree = Paketti mitä yritetään asentaa
-    >Function: pkg.installed = Mitä funktiota käytetään
-    >Result: True = Onnistuiko funktion ajaminen
-    >Duration = Kauanko komennon ajaminen kesti
-    >Changes = Mitä muutoksia tehtiin, nyt tuli uusi osioon `1.8.0-1+b1` eli tällainen luotiin 
-    >Summary for local = Kertoo onnistumiset ja epäonnistumiset
-    >Total states run = Montako asiaa tehtiin
+    >ID: tree = Paketti mitä yritetään asentaa  
+    >Function: pkg.installed = Mitä funktiota käytetään  
+    >Result: True = Onnistuiko funktion ajaminen  
+    >Duration = Kauanko komennon ajaminen kesti  
+    >Changes = Mitä muutoksia tehtiin, nyt tuli uusi osioon `1.8.0-1+b1` eli tällainen luotiin   
+    >Summary for local = Kertoo onnistumiset ja epäonnistumiset  
+    >Total states run = Montako asiaa tehtiin  
 
 ##### file
 File komennon avulla hallinnoidaan tiedostoja (WMware 2024b).
 - Ajoin komennon `sudo salt-call --local -l info state.single file.managed /tmp/testikansio` joka luo kansioita  
-    ![ef1.png](ef1.png)
-    >ID: /tmp/testikansio = Mikä kansio halutaan luoda
-    >Function: file.managed = Mitä funktiota käytetään
-    >Result: True = Onnistuiko funktion suoritus
-    >Comment: Empty file = Kommentti mitä tehdään
-    >Changes = Kertoo tehdyistä muutoksista
-    >Summary for local = Kertoo onnistumiset ja epäonnistumiset
-    >Total states run = Montako asiaa tehtiin
+    ![ef1.png](ef1.png)  
+    >ID: /tmp/testikansio = Mikä kansio halutaan luoda  
+    >Function: file.managed = Mitä funktiota käytetään  
+    >Result: True = Onnistuiko funktion suoritus  
+    >Comment: Empty file = Kommentti mitä tehdään  
+    >Changes = Kertoo tehdyistä muutoksista  
+    >Summary for local = Kertoo onnistumiset ja epäonnistumiset  
+    >Total states run = Montako asiaa tehtiin  
 
 ##### service
 Service komennon avulla voidaan määritellä palveluita päälle tai pois päältä (WMware 2024c).
 - Ajoin komennon `sudo salt-call --local -l info state.single service.running apache2 enable=True` jonka on tarkoitus käynnistää apache. Sitä ei ole asennettuna.  
-    ![es1.png](es1.png)
-    >ID: apache2 = Mitä funktio koskee
-    >Function: service.running = Mitä funktiota käytetään
-    >Result: False = Onnistuiko funktion ajaminen
-    >Comment: The named service apache2 is not available = Odotettu tulos, koska apachea ei ole asennettu
-    >Changes = Ei muutoksia, koska mitään ei voitu tehdä
-    >Summary for local = Kertoo sen, että epäonnistuttiin
+    ![es1.png](es1.png)  
+    >ID: apache2 = Mitä funktio koskee  
+    >Function: service.running = Mitä funktiota käytetään  
+    >Result: False = Onnistuiko funktion ajaminen  
+    >Comment: The named service apache2 is not available = Odotettu tulos, koska apachea ei ole asennettu  
+    >Changes = Ei muutoksia, koska mitään ei voitu tehdä  
+    >Summary for local = Kertoo sen, että epäonnistuttiin  
 
 ##### user
 User komennon avulla voidaan luoda ja hallita käyttäjäasetuksia (WMware 2024d).
 - Ajoin alkuun komennon `Sudo salt-call --local grains.item username` jotta saan selville käyttäjätunnuksen joka palautti `root`
 - Ajoin komennon `sudo salt-call --local -l info state.single user.present root`  
     ![eu1.png](eu1.png)  
-    >ID: root = Kertoo mitä funktio koskee
-    >Function: user.present = Funktion nimi
-    >Result: True = Kertoo onnistuiko funktion suoritus
-    >Comment: User root is present and up to date = Komennon kommentti
-    >Changes = Kertoisi jos muutoksia olisi tehty
-    >Summary for local = Kertoo funktion onnistuneen
+    >ID: root = Kertoo mitä funktio koskee  
+    >Function: user.present = Funktion nimi  
+    >Result: True = Kertoo onnistuiko funktion suoritus  
+    >Comment: User root is present and up to date = Komennon kommentti  
+    >Changes = Kertoisi jos muutoksia olisi tehty  
+    >Summary for local = Kertoo funktion onnistuneen  
 
 - Annoin toisen komennon käyttäjätunnuksen luontiin `sudo salt-call --local -l info state.single user.present testi`  
-    ![eu2.png](eu2.png)
-    >Tässä nähdään kommentissa, että uusi käyttäjä luotiin sekä suymmary for local osio osoittaa, että tapahtuma onnistui
+    ![eu2.png](eu2.png)  
+    >Tässä nähdään kommentissa, että uusi käyttäjä luotiin sekä suymmary for local osio osoittaa, että tapahtuma onnistui  
 
 - Testasin onnistumisen luomalla käyttäjätunnukselle uuden kansion  
-    ![eu3.png](eu3.png)
+    ![eu3.png](eu3.png)  
 
 ##### cmd
 Cmd komennon avulla voidaan hallinnoida komentojen suoritusta esimerkiksi tiettyjen ehtojen täytyttyä (WMware 2024e).
 - Ajoin komennon `sudo salt-call --local -l info state.single cmd.run 'touch /tmp/foo' creates="/tmp/foo"`  
     ![ec1.png](ec1.png)
-    >ID: touch /tmp/foo = Kertoo mitä funktio koskee
-    >Function: cmd.run = Funktion nimi
-    >Comment = kommentti
-    >Changes = Kertoo mitä muutoksia tehtiin
-    >Summary for local = Kertoo funktion onnistuneen
+    >ID: touch /tmp/foo = Kertoo mitä funktio koskee  
+    >Function: cmd.run = Funktion nimi  
+    >Comment = kommentti  
+    >Changes = Kertoo mitä muutoksia tehtiin  
+    >Summary for local = Kertoo funktion onnistuneen  
 
 ---
 
@@ -174,9 +174,9 @@ Idempotentti voidaan määritellä niin, että jokin komento voidaan suorittaa u
 
 1. Aikaisemmin asennettiin pkg funktion avulla tree paketti. Voin ajaa sen uudestaan, ilman että mikään muuttuu, joten se on idempotentti funktio. `sudo salt-call --local -l info state.single pkg.installed tree`
     - Ensimmäinen ajokerta:  
-      ![ep1.png](ep1.png)
+      ![ep1.png](ep1.png)  
     - Toinen ja Kolmas ajokerta:
-      ![f1.png](f1.png) 
+      ![f1.png](f1.png)  
 Tässä havaitaan se, että ensimmäisellä kerralla muutoksia tehtiin `Changes` kohdan perusteella, mutta toisella ja kolmannella kerralla ei muutoksia tehty, mutta `Summary for local` osio kertoo, että funktiot saatiin ajettua.
 
 ---
