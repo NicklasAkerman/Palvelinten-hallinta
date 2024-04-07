@@ -108,7 +108,7 @@ Tehtävänä oli ajaa shell-komento orjalla Saltin master-slave yhteyttä käytt
 Tehtävänä oli ajaa useita idempotentteja komentoja master-slave yhteyttä käyttäen. Idempotentit komennot olivat tuttuja jo edelliseltä viikolta(NicklasHH 2024)
 
 1. Ajoin komennon testi1 eli master koneella `sudo salt '*' -l info state.single pkg.installed micro` eli asensin micron testi2 koneelle.
-2. Todensin asennuksen onnistumisen ajamalla komennon `micro testi.txt` testi2 koneella, joka avasin micron, joten asennus onnistui. Myös testi1 eli master näytti, että asennus onnistui:
+2. Todensin asennuksen onnistumisen ajamalla komennon `micro testi.txt` testi2 koneella, joka avasin micron, joten asennus onnistui. Myös testi1 eli master näytti, että asennus onnistui:  
     ![d1.png](d1.png)
 3. Kun asennus on tehty, ei komento enään tee mitään, mutta se ajetaan onnistuneesti:  
     ![d2.png](d2.png)
