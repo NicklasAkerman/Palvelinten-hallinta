@@ -73,7 +73,7 @@ Tehtävänä oli asentaa kaksi virtuaalikonetta samaan verkkoon ja todentaa niid
 6. Todensin toiminnan kirjautumalla molemmille virtuaalikoneille SSH yhteyden avulla, ja testasin pingata virtuaalikoneilla toisilleen ja testi1 virtuaalikoneella myös Googleen:  
     ![a2.png](a2.png)
 
-##### Osion lähteet: (Karvinen 2021)
+##### Osion lähteet: (Karvinen 2021, Karvinen 2024a)
 
 ---
 
@@ -89,7 +89,7 @@ Tehtävänä oli asentaa Saltin herra-orja arkkitehtuuri toimimaan virtuaalisen 
 6. Todensin toiminnan antamalla testi1 koneella  komennot `sudo salt '*' cmd.run 'whoami` ja `sudo salt '*' cmd.run 'hostname -I'`  
     ![b1.png](b2.png)
 
-##### Osion lähteet: (Karvinen 2018)
+##### Osion lähteet: (Karvinen 2018, Karvinen 2024a)
 
 ---
 
@@ -101,6 +101,8 @@ Tehtävänä oli ajaa shell-komento orjalla Saltin master-slave yhteyttä käytt
 
 2. Todensin tämän antamalla saman komennon testi2 koneelle `ls -l /home/*`  
     ![c2.png](c2.png)
+
+##### Osion lähteet: (Karvinen 2024a)
 
 ---
 
@@ -119,7 +121,7 @@ Tehtävänä oli ajaa useita idempotentteja komentoja master-slave yhteyttä kä
 5. Todensin asennuksen vielä testi2 koneella:  
     ![d4.png](d4.png)
 
-##### Osion lähteet: (NicklasHH 2024)
+##### Osion lähteet: (Karvinen 2024a, NicklasHH 2024)
 
 ---
 
@@ -129,6 +131,8 @@ Tehtävänä oli kerätä tietoja orjista grains.item komentoa hyödyntäen.
 1. Annoin komennon `sudo salt testi2 grains.items` joka listaa kaikki mahdolliset itemit. 
 2. Annoin komennon, jolla listasin itseäni kiinnostavat tiedot `sudo salt testi2 grains.item groupname host kernel lsb_distrib_description`  
     ![e1.png](e1.png)
+
+##### Osion lähteet: (Karvinen 2024a)
 
 ---
 
