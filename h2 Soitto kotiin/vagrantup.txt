@@ -1,0 +1,137 @@
+PS C:\Users\nickl\kaksikonetta> vagrant ssh testi1
+VM must be created before running this command. Run `vagrant up` first.
+PS C:\Users\nickl\kaksikonetta>
+PS C:\Users\nickl\kaksikonetta> vagrant up
+Bringing machine 'testi1' up with 'virtualbox' provider...
+Bringing machine 'testi2' up with 'virtualbox' provider...
+==> testi1: Importing base box 'debian/bullseye64'...
+==> testi1: Matching MAC address for NAT networking...
+==> testi1: Checking if box 'debian/bullseye64' version '11.20240212.1' is up to date...
+==> testi1: Setting the name of the VM: kaksikonetta_testi1_1712481131819_45591
+==> testi1: Clearing any previously set network interfaces...
+==> testi1: Preparing network interfaces based on configuration...
+    testi1: Adapter 1: nat
+    testi1: Adapter 2: hostonly
+==> testi1: Forwarding ports...
+    testi1: 22 (guest) => 2222 (host) (adapter 1)
+==> testi1: Booting VM...
+==> testi1: Waiting for machine to boot. This may take a few minutes...
+    testi1: SSH address: 127.0.0.1:2222
+    testi1: SSH username: vagrant
+    testi1: SSH auth method: private key
+    testi1:
+    testi1: Vagrant insecure key detected. Vagrant will automatically replace
+    testi1: this with a newly generated keypair for better security.
+    testi1:
+    testi1: Inserting generated public key within guest...
+    testi1: Removing insecure key from the guest if it's present...
+    testi1: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> testi1: Machine booted and ready!
+==> testi1: Checking for guest additions in VM...
+    testi1: The guest additions on this VM do not match the installed version of
+    testi1: VirtualBox! In most cases this is fine, but in rare cases it can
+    testi1: prevent things such as shared folders from working properly. If you see
+    testi1: shared folder errors, please make sure the guest additions within the
+    testi1: virtual machine match the version of VirtualBox you have installed on
+    testi1: your host and reload your VM.
+    testi1:
+    testi1: Guest Additions Version: 6.0.0 r127566
+    testi1: VirtualBox Version: 7.0
+==> testi1: Setting hostname...
+==> testi1: Configuring and enabling network interfaces...
+==> testi1: Mounting shared folders...
+    testi1: /home/vagrant/shared => C:/Users/nickl/kaksikonetta/shared
+==> testi1: Running provisioner: shell...
+    testi1: Running: inline script
+    testi1: apt-get update
+    testi1: Get:1 https://security.debian.org/debian-security bullseye-security InRelease [48.4 kB]
+    testi1: Get:2 https://deb.debian.org/debian bullseye InRelease [116 kB]
+    testi1: Get:3 https://deb.debian.org/debian bullseye-updates InRelease [44.1 kB]
+    testi1: Get:4 https://deb.debian.org/debian bullseye-backports InRelease [49.0 kB]
+    testi1: Get:5 https://security.debian.org/debian-security bullseye-security/main Sources [170 kB]
+    testi1: Get:6 https://security.debian.org/debian-security bullseye-security/main amd64 Packages [271 kB]
+    testi1: Get:7 https://deb.debian.org/debian bullseye/main Sources [8500 kB]
+    testi1: Get:8 https://security.debian.org/debian-security bullseye-security/main Translation-en [175 kB]
+    testi1: Get:9 https://deb.debian.org/debian bullseye/main amd64 Packages [8068 kB]
+    testi1: Get:10 https://deb.debian.org/debian bullseye/main Translation-en [6236 kB]
+    testi1: Get:11 https://deb.debian.org/debian bullseye-updates/main Sources [7908 B]
+    testi1: Get:12 https://deb.debian.org/debian bullseye-updates/main amd64 Packages [18.8 kB]
+    testi1: Get:13 https://deb.debian.org/debian bullseye-updates/main Translation-en [10.9 kB]
+    testi1: Get:14 https://deb.debian.org/debian bullseye-backports/main Sources [381 kB]
+    testi1: Get:15 https://deb.debian.org/debian bullseye-backports/main amd64 Packages [405 kB]
+    testi1: Get:16 https://deb.debian.org/debian bullseye-backports/main Translation-en [345 kB]
+    testi1: Fetched 24.8 MB in 4s (5941 kB/s)
+    testi1: Reading package lists...
+    testi1: echo "Done - set up test environment - https://terokarvinen.com/search/?q=vagrant"
+    testi1: Done - set up test environment - https://terokarvinen.com/search/?q=vagrant
+==> testi2: Importing base box 'debian/bullseye64'...
+==> testi2: Matching MAC address for NAT networking...
+==> testi2: Checking if box 'debian/bullseye64' version '11.20240212.1' is up to date...
+==> testi2: Setting the name of the VM: kaksikonetta_testi2_1712481183887_96776
+==> testi2: Fixed port collision for 22 => 2222. Now on port 2200.
+==> testi2: Clearing any previously set network interfaces...
+==> testi2: Preparing network interfaces based on configuration...
+    testi2: Adapter 1: nat
+    testi2: Adapter 2: hostonly
+==> testi2: Forwarding ports...
+    testi2: 22 (guest) => 2200 (host) (adapter 1)
+==> testi2: Booting VM...
+==> testi2: Waiting for machine to boot. This may take a few minutes...
+    testi2: SSH address: 127.0.0.1:2200
+    testi2: SSH username: vagrant
+    testi2: SSH auth method: private key
+    testi2:
+    testi2: Vagrant insecure key detected. Vagrant will automatically replace
+    testi2: this with a newly generated keypair for better security.
+    testi2:
+    testi2: Inserting generated public key within guest...
+    testi2: Removing insecure key from the guest if it's present...
+    testi2: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> testi2: Machine booted and ready!
+==> testi2: Checking for guest additions in VM...
+    testi2: The guest additions on this VM do not match the installed version of
+    testi2: VirtualBox! In most cases this is fine, but in rare cases it can
+    testi2: prevent things such as shared folders from working properly. If you see
+    testi2: shared folder errors, please make sure the guest additions within the
+    testi2: virtual machine match the version of VirtualBox you have installed on
+    testi2: your host and reload your VM.
+    testi2:
+    testi2: Guest Additions Version: 6.0.0 r127566
+    testi2: VirtualBox Version: 7.0
+==> testi2: Setting hostname...
+==> testi2: Configuring and enabling network interfaces...
+==> testi2: Mounting shared folders...
+    testi2: /home/vagrant/shared => C:/Users/nickl/kaksikonetta/shared
+==> testi2: Running provisioner: shell...
+    testi2: Running: inline script
+    testi2: apt-get update
+    testi2: Get:1 https://security.debian.org/debian-security bullseye-security InRelease [48.4 kB]
+    testi2: Get:2 https://deb.debian.org/debian bullseye InRelease [116 kB]
+    testi2: Get:3 https://deb.debian.org/debian bullseye-updates InRelease [44.1 kB]
+    testi2: Get:4 https://deb.debian.org/debian bullseye-backports InRelease [49.0 kB]
+    testi2: Get:5 https://security.debian.org/debian-security bullseye-security/main Sources [170 kB]
+    testi2: Get:6 https://security.debian.org/debian-security bullseye-security/main amd64 Packages [271 kB]
+    testi2: Get:7 https://security.debian.org/debian-security bullseye-security/main Translation-en [175 kB]
+    testi2: Get:8 https://deb.debian.org/debian bullseye/main Sources [8500 kB]
+    testi2: Get:9 https://deb.debian.org/debian bullseye/main amd64 Packages [8068 kB]
+    testi2: Get:10 https://deb.debian.org/debian bullseye/main Translation-en [6236 kB]
+    testi2: Get:11 https://deb.debian.org/debian bullseye-updates/main Sources [7908 B]
+    testi2: Get:12 https://deb.debian.org/debian bullseye-updates/main amd64 Packages [18.8 kB]
+    testi2: Get:13 https://deb.debian.org/debian bullseye-updates/main Translation-en [10.9 kB]
+    testi2: Get:14 https://deb.debian.org/debian bullseye-backports/main Sources [381 kB]
+    testi2: Get:15 https://deb.debian.org/debian bullseye-backports/main amd64 Packages [405 kB]
+    testi2: Get:16 https://deb.debian.org/debian bullseye-backports/main Translation-en [345 kB]
+    testi2: Fetched 24.8 MB in 4s (6249 kB/s)
+    testi2: Reading package lists...
+    testi2: Done - set up test environment - https://terokarvinen.com/search/?q=vagrant
+    testi2: echo "Done - set up test environment - https://terokarvinen.com/search/?q=vagrant"
+
+==> testi1: Machine 'testi1' has a post `vagrant up` message. This is a message
+==> testi1: from the creator of the Vagrantfile, and not from Vagrant itself:
+==> testi1:
+==> testi1: Vanilla Debian box. See https://app.vagrantup.com/debian for help and bug reports
+
+==> testi2: Machine 'testi2' has a post `vagrant up` message. This is a message
+==> testi2: from the creator of the Vagrantfile, and not from Vagrant itself:
+==> testi2:
+==> testi2: Vanilla Debian box. See https://app.vagrantup.com/debian for help and bug reports
