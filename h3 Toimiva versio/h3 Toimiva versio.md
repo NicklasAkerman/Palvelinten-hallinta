@@ -1,4 +1,4 @@
-# h2 h3 Toimiva versio
+# h3 Toimiva versio
 
 Koska viikon tehtävät liittyvät isolta osin Gittiin ja GitHubiin, esitiedoksi haluan mainita, että Gitin käyttö on tuttua ja sitä tulee käytettyä omien tehtävien tekemiseen sekä olen käyttänyt sitä ryhmätöissä ja käytössä ollut esimerkiksi eri haarojen käyttäminen.
 
