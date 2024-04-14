@@ -204,7 +204,7 @@ Tämä tehtävä oli vapaahetoinen. Tehtävänä oli kokeilla Gittiä eri käytt
     - Annoin komennon `vagrant init bento/fedora-latest` jonka avulla saan fedoran vagrantiin(HashiCorp 2024)
     - Annoin komennon `vagrant up` kello asennukseen meni alle kaksi minuuttia
     - Annoin komennon `vagrant ssh`  
-      ![f1.png](f1.png)
+      ![f1.png](f1.png)  
 2. SSH-Avain
     - Yritin tehdä SSH avaimen antamalla komennon `ssh-keygen` joka yllätyksekseni onnistui. Painoin enteriä ohittaakseni kysymykset, jolloin avain luotiin vakiokansioon. Julkinen SSH avain löytyi polusta `/home/vagrant/.ssh/id_rsa.pub`  
     - Annoin komennon `cat /home/vagrant/.ssh/id_rsa.pub` ja kopioin tulosteen.  
