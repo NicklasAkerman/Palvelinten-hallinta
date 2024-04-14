@@ -38,7 +38,7 @@ Kaikki tämän dokumentin tehtävät on saatu Tero Karvisen kurssisivulta(Karvin
 
 ## x) Lue ja tiivistä
 
-#### 1.3 Getting Started - What is Git? (Chacon and Straub 2014)
+### 1.3 Getting Started - What is Git? (Chacon and Straub 2014)
 Tehtävänä oli lukea ja tiivistää Gitin käyttöopasta kohdasta `1.3 Getting started`
 - Lähes jokainen operaatio on paikallinen. Esimerkiksi historian selvittäminen ei tarvitse internet yhteyttä.  
 - Gitissä tallennettu tieto tarkistetaan ennen tallentamista ja näin Git havaitsee kaikki muutokset ja tieto pysyy eheänä.  
@@ -51,7 +51,7 @@ Tehtävänä oli lukea ja tiivistää Gitin käyttöopasta kohdasta `1.3 Getting
     1. Tiedostoja muokataan  
     2. Valitaan mitkä muutokset halutaan tallentaa
     3. Tallennetaan muutokset
-#### Git add . && git commit; git pull && git push
+### Git add . && git commit; git pull && git push
 Tehtävänä oli avata komennon `Git add . && git commit; git pull && git push` jokainen osa.
 - Git add .  
     - Komento lisää kaikki tiedostot indeksiin  
@@ -66,7 +66,7 @@ Tehtävänä oli avata komennon `Git add . && git commit; git pull && git push` 
 
 ##### Osion lähteet: (Polvinen 2020)
 
-#### terokarvinen/suolax/ historia (terokarvinen 2024)
+### terokarvinen/suolax/ historia (terokarvinen 2024)
 Tehtävänä oli selittää [terokarvinen/suolax/](https://github.com/terokarvinen/suolax/) loki ja muutokset
 
 - Yritin aluksi katsoa muutoslokia suoraan githubista, mutta koska siellä ei paljoa ole kerrottavaa, tein osiosta kloonin itselleni. 
