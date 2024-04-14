@@ -165,7 +165,7 @@ Tehtävänä oli tutkia ja selittää varastoni lokia ja tarkistaa nimen ja säh
 ---
 
 ## e) Suolattu rakki
-Tehtävänä oli ajaa Salt-tiloja, käytin tehtävässä Teron tunnilla tekemää varastoa https://github.com/terokarvinen/suolax jonka kloonasin itselleni.
+Tehtävänä oli ajaa Salt-tiloja, käytin tehtävässä Teron tunnilla tekemää varastoa https://github.com/terokarvinen/suolax jonka kloonasin paikalliseksi varastokseni.
 
 1. Avasin terminaalin adminina ja siirryin kansioon bullseye
 2. Annoin komennon `vagrant up` ja odotin asennusta noin minuutin
