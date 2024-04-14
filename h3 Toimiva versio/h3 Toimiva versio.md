@@ -134,7 +134,7 @@ Tehtävänä oli tehdä gittiin jokin huono muutos, jonka jälkeen hakea vanha v
 1. Polussa `C:\Users\nickl\Task_3\summer-task` kirjoitin komennon `notepad newFile.txt`
 2. Kirjoitin tiedostoon uudelle riville: `typerä muutos` ja tallensin tiedoston
 3. Annoin komennon `git reset --hard` ja palautuksena sain varmistuksen, että haettiin GitHubista viimeisin versio `HEAD is now at aff17e0 Add new textfile`
-4. Kirjoitin taas notepad newFile.txt josta oli kadonnut rivi `typerä muutos`
+4. Kirjoitin taas `notepad newFile.txt` josta oli kadonnut rivi `typerä muutos`
 
 
 ##### Osion lähteet: (Karvinen 2024)
