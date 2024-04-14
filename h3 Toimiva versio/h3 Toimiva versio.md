@@ -4,7 +4,7 @@ Koska viikon tehtävät liittyvät isolta osin Gittiin ja GitHubiin, esitiedoksi
 
 Tehtävien tekeminen onnistui ulkomuistista poislukien yksittäisiä osioita, joihin on lähde merkattu erikseen. Osiota käytiin läpi 10.4.2024 Tero Karvisen Palvelinten hallinta kurssilla, josta tein omia muistiinpanoja.(Karvinen 2024)
 
-Kaikki tämän dokumentin tehtävät on saatu Tero Karvisen kurssisivulta(Karvinen 2024). Olen merkinnyt dokumenttiin aikoja ainoastaan olennaisiksi kokemiini osioihin. Sisällysluettelo/Viikon 2 tehtävälistaus:
+Kaikki tämän dokumentin tehtävät on saatu Tero Karvisen kurssisivulta(Karvinen 2024). Olen merkinnyt dokumenttiin aikoja ainoastaan olennaisiksi kokemiini osioihin. Sisällysluettelo/Viikon 3 tehtävälistaus:
 
 
 - x)[ Lue ja tiivistä](#x-lue-ja-tiivistä)
