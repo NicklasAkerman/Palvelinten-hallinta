@@ -80,7 +80,7 @@ Tehtävänä oli selittää [terokarvinen/suolax/](https://github.com/terokarvin
     - Date osio kertoo muokkaamis päivämäärän  
     - Commit message  
     - Kerrotaan missä tiedostossa on muutoksia  
-    - Kerrotaan mitä tiedostossa on muokattu, punainen teksti on poistettu(tai - tektin edessä) kun taas vihreä (tai + tekstin edessä) kertoo lisätystä asiasta.  
+    - Kerrotaan mitä tiedostossa on muokattu, punainen teksti on poistettu (tai - tektin edessä) kun taas vihreä (tai + tekstin edessä) kertoo lisätystä asiasta.  
     - Logista siis näkee yksityiskohtaisesti kuka teki, milloin teki, mitä teki ja minne teki.  
 3. Kun katsoin tuota `git log --patch` osiota, näytti se aivan samalta kun commitin tarkistelu suoraan gitistä, joten tämän olisin sittenkin voinut tehdä sieltä suoraan.   
     **Terminaalin versio:**   
