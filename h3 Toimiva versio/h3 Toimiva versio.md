@@ -245,7 +245,7 @@ Tämä tehtävä oli vapaahetoinen. Tehtävänä oli kokeilla Gittiä eri käytt
     - Annoin komennon `git log` ja muutokset näkyivät logissa. Varmennuksena se, että nimenä on `Nicklas Fedoralla`
       ![f6.png](f6.png)
 ##### Omia havaintoja
-Linux-palvelimet ja Palvelinten-hallinta kurssilta opitut komennot toivivat hyvin pitkälti myös Fedoralla. Tässä osiossa ainoastaan dnf oli eroavaisuutena aikaisemmin käyttämäni debianin apt-get komentoon.
+Linux-palvelimet ja Palvelinten-hallinta kurssilta opitut komennot toimivat hyvin pitkälti myös Fedoralla. Tässä osiossa ainoastaan dnf oli eroavaisuutena aikaisemmin käyttämäni debianin apt-get komentoon.
 
 ##### Osion lähteet: (HashiCorp 2024, GitHub S.A.)
 ---
