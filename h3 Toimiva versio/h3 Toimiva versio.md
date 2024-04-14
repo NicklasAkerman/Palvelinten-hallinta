@@ -82,12 +82,13 @@ Tehtävänä oli selittää [terokarvinen/suolax/](https://github.com/terokarvin
     - Kerrotaan missä tiedostossa on muutoksia  
     - Kerrotaan mitä tiedostossa on muokattu, punainen teksti on poistettu(tai - tektin edessä) kun taas vihreä (tai + tekstin edessä) kertoo lisätystä asiasta.  
     - Logista siis näkee yksityiskohtaisesti kuka teki, milloin teki, mitä teki ja minne teki.  
-3. Kun katsoin tuota `git log --patch` osiota, näytti se aivan samalta kun commitin tarkistelu suoraan gitistä, joten tämän olisin sittenkin voinut tehdä sieltä suoraan.  
-    **Terminaalin versio:**  
-    ![x3.png](x3.png)
-    **GitHubin versio**  
-    ![x4.png](x4.png)
+3. Kun katsoin tuota `git log --patch` osiota, näytti se aivan samalta kun commitin tarkistelu suoraan gitistä, joten tämän olisin sittenkin voinut tehdä sieltä suoraan.   
+    **Terminaalin versio:**   
+    ![x3.png](x3.png)  
+    **GitHubin versio**   
+    ![x4.png](x4.png)  
 
+##### Osion lähteet: (Karvinen 2024)
 ---
 
 ## a) Online
