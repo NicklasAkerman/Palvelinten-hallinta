@@ -1,6 +1,6 @@
 # h3 Toimiva versio
 
-Koska viikon tehtävät liittyvät isolta osin Gittiin ja GitHubiin, esitiedoksi haluan mainita, että Gitin käyttö on tuttua ja sitä tulee käytettyä omien tehtävien tekemiseen sekä olen käyttänyt sitä ryhmätöissä ja käytössä ollut esimerkiksi eri haarojen käyttäminen.
+Koska viikon tehtävät liittyvät isolta osin Gittiin ja GitHubiin, esitiedoksi haluan mainita, että Gitin käyttö on tuttua ja sitä tulee käytettyä omien tehtävien tekemiseen sekä olen käyttänyt sitä ryhmätöissä aika paljon.
 
 Tehtävien tekeminen onnistui ulkomuistista poislukien yksittäisiä osioita, joihin on lähde merkattu erikseen. Osiota käytiin läpi 10.4.2024 Tero Karvisen Palvelinten hallinta kurssilla, josta tein omia muistiinpanoja.(Karvinen 2024)
 
