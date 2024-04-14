@@ -85,6 +85,7 @@ Tehtävänä oli selittää [terokarvinen/suolax/](https://github.com/terokarvin
 3. Kun katsoin tuota `git log --patch` osiota, näytti se aivan samalta kun commitin tarkistelu suoraan gitistä, joten tämän olisin sittenkin voinut tehdä sieltä suoraan.   
     **Terminaalin versio:**   
     ![x3.png](x3.png)  
+    <br><br>
     **GitHubin versio**   
     ![x4.png](x4.png)  
 
