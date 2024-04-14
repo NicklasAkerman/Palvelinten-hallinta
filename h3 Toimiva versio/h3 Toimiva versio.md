@@ -146,7 +146,7 @@ Tehtävänä oli tutkia ja selittää varastoni lokia ja tarkistaa nimen ja säh
 
 1. Ensimmäisenä tarkistin, että nimi ja sähköposti on kuten haluan niiden olevan 
     ![d1.png](d1.png)
-    - Jos haluaisin muuttaa niitä, se onnistuu komennooilla   
+    - Jos haluaisin muuttaa niitä, se onnistuisi komennoilla   
       - git config --global user.name "uusinimi"  
       - git config --global user.email "uusiSposti"  
 2. Testasin komentoa `git log` jolla näin repositoryssä tehdyt muutokset
@@ -180,7 +180,7 @@ Tehtävänä oli ajaa Salt-tiloja omasta varastostani.
 11. Annoin komennon `git clone git@github.com:terokarvinen/suolax.git` ja tässä kohtaa otettiin myös SSH avain käyttöön kysymyksellä `Are you sure you want to continue connecting (yes/no/[fingerprint])?` johon vastasin `yes`
 12. Siirryin kloonattuun kansioon komennolla `cd suolax/`
 13. Annoin komennon `make` ja sain vastauksena `-bash: make: command not found` joten kirjoitin googleen virheen ja valitsin sieltä githubin keskustelun, jossa ehdotettiin samaan ongelmaan `make` asennusta(RTMDFG 2017) joten annoin komennon `sudo apt-get install make`
-14. Annoin komennon `make` ja asennukset lähtivät rullaamaan.
+14. Annoin komennon `make` ja asennukset lähtivät rullaamaan.  
     ![e1.png](e1.png)
 15. Tarkistin, mitä kaikkea asennettiin jotta osasin todentaa asennuksien onnistumisen. Kokeilin seuraavia komentoja: 
     > `cmatrix` <-- Lähti rullaamaan vihreää tekstiä  
@@ -188,7 +188,7 @@ Tehtävänä oli ajaa Salt-tiloja omasta varastostani.
     > `ls /tmp` <-- Palautti tulosteen, jossa näkyy polusta löytyvän kansio `hello-salt-from-git` kuten kuuluukin  
     > `tree` <-- palautti alla olevan  
     ![e2.png](e2.png)
-16. Voidaan todeta, että asennukset onnistuivat. Ajoin komennon vielä kerran ja edelleen ajaminen onnistui, mutta mitään ei asennettu.
+16. Voidaan todeta, että asennukset onnistuivat. Ajoin komennon vielä kerran ja edelleen ajaminen onnistui, mutta mitään ei asennettu.  
     ![e3.png](e3.png)
 
 
@@ -203,7 +203,7 @@ Tämä tehtävä oli vapaahetoinen. Tehtävänä oli kokeilla Gittiä eri käytt
     - Avasin terminaalin ja tein uuden kansion ja siirryin siihen `mkdir fedoratesti; cd fedoratesti`
     - Annoin komennon `vagrant init bento/fedora-latest` jonka avulla saan fedoran vagrantiin(HashiCorp 2024)
     - Annoin komennon `vagrant up` kello asennukseen meni alle kaksi minuuttia
-    - Annoin komennon `vagrant ssh`
+    - Annoin komennon `vagrant ssh`  
       ![f1.png](f1.png)
 2. SSH-Avain
     - Yritin tehdä SSH avaimen antamalla komennon `ssh-keygen` joka yllätyksekseni onnistui. Painoin enteriä ohittaakseni kysymykset, jolloin avain luotiin vakiokansioon. Julkinen SSH avain löytyi polusta `/home/vagrant/.ssh/id_rsa.pub`  
@@ -229,16 +229,16 @@ Tämä tehtävä oli vapaahetoinen. Tehtävänä oli kokeilla Gittiä eri käytt
     - Muutaman sekunnin asennuksien jälkeen tuli tuttu `Complete!`
     - Ajoin uudelleen komennon `micro readme.md` ja micro avautui. 
     - Avautunut tiedosto oli kuitenkin tyhjä, joten suljin sen ja annoin uudelleen komennon kirjoittamalla tiedoston nimen tarkalleen oikein `micro README.md` jolloin avautui micro missä oli teksti, joka sinne kuului. Lisäsin tekstin `Tehty fedoralla` uudelle riville, tallensin ja suljin tiedoston. 
-    - Annoin komennot `git add .`, `git commit -m "new line with fedora"` jolloin sain ilmoituksen, että minun tulee antaa tietoja itsestäni
+    - Annoin komennot `git add .`, `git commit -m "new line with fedora"` jolloin sain ilmoituksen, että minun tulee antaa tietoja itsestäni  
         ![f3.png](f3.png)
     - Annoin komennot `git config --global user.name "Nicklas Fedoralla"` ja `git config --global user.email "nicklas.akerman@myy.haaga-helia.fi"`
     - Kokeilin uudelleen komentoa `git commit -m "new line with fedora"` joka palautti  
         >[main 78a58f8] new line with fedora  
         >1 file changed, 1 insertion(+)  
-    - Annoin vielä komennon `git push` ja varmistin, että siellä näkyy muutokset README.md tiedostossa
+    - Annoin vielä komennon `git push` ja varmistin, että siellä näkyy muutokset README.md tiedostossa  
       ![f4.png](f4.png)
     - Ulkoasu oli kuitenkin väärä = riviä ei ollut vaihdettu, joten komennolla `micro README.md` avasin vielä readme tiedoston ja lisäsin kaksi välilyöntiä sanan `summer` perään ja tallensin tiedoston
-    - Kokeilin antaa komennon `git add . && git commit -m "Edit README.md"; git push` ja nyt GitHubissa oli halutunlainen ulkoasu
+    - Kokeilin antaa komennon `git add . && git commit -m "Edit README.md"; git push` ja nyt GitHubissa oli halutunlainen ulkoasu  
       ![f5.png](f5.png)
 
 ##### Omia havaintoja
@@ -254,17 +254,17 @@ Tämä tehtävä oli vapaahetoinen. Tehtävänä oli antaa kaverille kirjoitusoi
 2. Avautuneelta sivulta valitsin vasemmasta reunasta `Collaborators`
 3. Painoin vihreää `Add people`
 4. Lisäsin tunnuksen `fxi09369@romog.com` jonka tein minutemaililla
-5. Toisella tunnuksella oikeasta yläreunasta avasin inboksin, jossa oli kutsu liittyä summer-task repositoryyn jossa painoin `Accept invitation`
+5. Toisella tunnuksella oikeasta yläreunasta avasin inboksin, jossa oli kutsu liittyä summer-task repositoryyn jossa painoin `Accept invitation`  
     ![g1.png](g1.png)
 6. Tällä uudella käyttäjällä menin osoitteeseen https://github.com/NicklasHH/summer-task jossa painoin oikelta `Add file` jonka jälkeen `Create new file`
-7. Lisäsin tiedostolle nimen, laitoin vähän tekstiä ja painoin lopuksi vihreää `Commit changes...` 
+7. Lisäsin tiedostolle nimen, laitoin vähän tekstiä ja painoin lopuksi vihreää `Commit changes...`   
     ![g2.png](g2.png)
 8. ja annoin Commit message osioon `Create toisenTiedosto.md` jonka jälkeen painoin vihreää `Commit changes`
-9. Avautui uusi ikkuna ja annoin Commit message osioon `Create toisenTiedosto.md` jonka jälkeen painoin vihreää `Commit changes`
+9. Avautui uusi ikkuna ja annoin Commit message osioon `Create toisenTiedosto.md` jonka jälkeen painoin vihreää `Commit changes`  
     ![g3.png](g3.png)
-10. Siirryin terminaaliin ja annoin komennon `ls` jolla varmistin, että tällä hetkellä on vain 3 tiedostoa, jonka jälkeen annoin komennon `git pull` hakeakseni muutoksia ja lopuksi katsoin, tuliko uusi tiedosto antamalla `ls` komennon
+10. Siirryin terminaaliin ja annoin komennon `ls` jolla varmistin, että tällä hetkellä on vain 3 tiedostoa, jonka jälkeen annoin komennon `git pull` hakeakseni muutoksia ja lopuksi katsoin, tuliko uusi tiedosto antamalla `ls` komennon  
     ![g4.png](g4.png)
-11. Tarkistin vielä komennolla `git log`, että siellä näkyy, että tiedosto luotiin toisella tunnuksella  
+11. Tarkistin vielä komennolla `git log`, että siellä näkyy, että tiedosto luotiin toisella tunnuksella   
     ![g5.png](g5.png)
 
 ##### Osion lähteet: (Karvinen 2024)
