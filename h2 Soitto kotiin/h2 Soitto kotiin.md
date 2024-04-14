@@ -152,7 +152,7 @@ Tehtävänä oli kirjoittaa koodi polkuun `/srv/salt/init.sls` ja ajaa se orjall
 6. Ajoin vielä uudestaan herralla komennon `sudo salt testi2 state.apply testimoduuli` ja koska kansio oli jo luotu, ei mitään tehty vaikka komento ajettiinkin onnistuneesti:  
     ![f4.png](f4.png)
 
-##### Osion lähteet: (Karvinen 2024b)
+##### Osion lähteet: (Karvinen 2024a, Karvinen 2024b)
 
 ---
 
