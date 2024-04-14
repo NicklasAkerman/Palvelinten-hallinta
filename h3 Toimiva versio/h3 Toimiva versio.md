@@ -197,7 +197,7 @@ Tehtävänä oli ajaa Salt-tiloja omasta varastostani.
 ---
 
 ## f) Vapaaehtoinen: Se toinen järjestelmä
-Tämä tehtävä oli vapaahetoinen. Tehtävänä oli kokeilla Gittiä eri käyttöjärjestelmien kanssa. Tarkoitus oli selittää käyttö niin, että järjestelmää osaamatonkin saa tehtyä samat toimenpiteet. En ole koskaan käyttänyt fedoraa, mutta yritän selvitytyä osiosta täysin omatoimisesti testaamalla ainoastaan tietämieni komentojen avulla.
+Tämä tehtävä oli vapaahetoinen. Tehtävänä oli kokeilla Gittiä eri käyttöjärjestelmien kanssa. Tarkoitus oli selittää käyttö niin, että järjestelmää osaamatonkin saa tehtyä samat toimenpiteet. En ole koskaan käyttänyt fedoraa, mutta yritän selvitytyä osiosta täysin omatoimisesti testaamalla ainoastaan tietämieni komentojen avulla. Tein tämän osion vasta G osion jälkeen.
 
 1. Asensin Fedoran
     - Avasin terminaalin ja tein uuden kansion ja siirryin siihen `mkdir fedoratesti; cd fedoratesti`
@@ -251,7 +251,7 @@ Linux-palvelimet ja Palvelinten-hallinta kurssilta opitut komennot toivivat hyvi
 ---
 
 ## g) Vapaaehtoinen: yhteistyötä
-Tämä tehtävä oli vapaahetoinen. Tehtävänä oli antaa kaverille kirjoitusoikeus varastooni, jonka jälkeen molemmat tekee muutoksia varastoon gitillä.
+Tämä tehtävä oli vapaahetoinen. Tehtävänä oli antaa kaverille kirjoitusoikeus varastooni, jonka jälkeen molemmat tekee muutoksia varastoon gitillä. Tein osion ennen F osiota.
 
 1. Ollessani summer-task repositoryssä, valitsin oikelta ylhäältä `Settings`
 2. Avautuneelta sivulta valitsin vasemmasta reunasta `Collaborators`
@@ -262,7 +262,7 @@ Tämä tehtävä oli vapaahetoinen. Tehtävänä oli antaa kaverille kirjoitusoi
 6. Tällä uudella käyttäjällä menin osoitteeseen https://github.com/NicklasHH/summer-task jossa painoin oikelta `Add file` jonka jälkeen `Create new file`
 7. Lisäsin tiedostolle nimen, laitoin vähän tekstiä ja painoin lopuksi vihreää `Commit changes...`   
     ![g2.png](g2.png)
-8. ja annoin Commit message osioon `Create toisenTiedosto.md` jonka jälkeen painoin vihreää `Commit changes`
+8. Annoin Commit message osioon `Create toisenTiedosto.md` jonka jälkeen painoin vihreää `Commit changes`
 9. Avautui uusi ikkuna ja annoin Commit message osioon `Create toisenTiedosto.md` jonka jälkeen painoin vihreää `Commit changes`  
     ![g3.png](g3.png)
 10. Siirryin terminaaliin ja annoin komennon `ls` jolla varmistin, että tällä hetkellä on vain 3 tiedostoa, jonka jälkeen annoin komennon `git pull` hakeakseni muutoksia ja lopuksi katsoin, tuliko uusi tiedosto antamalla `ls` komennon  
