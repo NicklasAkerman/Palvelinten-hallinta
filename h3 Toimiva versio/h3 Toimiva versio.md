@@ -271,7 +271,7 @@ Tämä tehtävä oli vapaahetoinen. Tehtävänä oli antaa kaverille kirjoitusoi
 
 ## Lähdeluettelo
 
-Chacon and Straub 2014, 1.3 Getting Started - What is Git? Luettavissa: https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F. Luettu: 14.4.2024.
+Chacon and Straub 2014. 1.3 Getting Started - What is Git? Luettavissa: https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F. Luettu: 14.4.2024.
 
 GitHub S.A. Install Git. Luettavissa: https://github.com/git-guides/install-git. Luettu: 14.4.2024.
 
