@@ -48,9 +48,9 @@ Tehtävänä oli lukea ja tiivistää Gitin käyttöopasta kohdasta `1.3 Getting
     - Staged: Tila jossa merkitään muokatut tiedostot nykyisessä versiossa  
     - Committed: Tila jossa tiedostot ovat tallennettu tietokantaan  
 - Gitin käyttö menee pääsääntöisesti seuraavasti
-    1. Tiedostoja muokataan  
-    2. Valitaan mitkä muutokset halutaan tallentaa
-    3. Tallennetaan muutokset
+    - Tiedostoja muokataan  
+    - Valitaan mitkä muutokset halutaan tallentaa
+    - Tallennetaan muutokset
 ### Git add . && git commit; git pull && git push
 Tehtävänä oli avata komennon `Git add . && git commit; git pull && git push` jokainen osa.
 - Git add .  
