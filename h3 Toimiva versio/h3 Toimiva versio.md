@@ -96,10 +96,10 @@ Tehtävänä oli selittää [terokarvinen/suolax/](https://github.com/terokarvin
 Tehtävänä oli tehdä uusi varasto GitHubiin. Varasto tuli nimetä niin, että nimessä ja kuvauksessa on sana `summer`
 1. Aloitin tehtävän menemällä osoitteeseen https://github.com/NicklasHH jossa painoin yläreunasta `Repositories`
 2. Auenneelta sivustolta painoin oikeasta yläreunasta vihreää `New` painiketta
-3. Täysin tiedot kohtiin `Repository name`, `Description`, täpän kohtaan `Add READNE file` ja lisäsin lisenssin jonka jälkeen painoin `Create repository`
-    ![a1.png](a1.png)
-4. Osio on tehty ja löytyy osoitteesta https://github.com/NicklasHH/summer-task
-    ![a2.png](a2.png)
+3. Täysin tiedot kohtiin `Repository name`, `Description`, täpän kohtaan `Add README file` ja lisäsin lisenssin jonka jälkeen painoin `Create repository`  
+    ![a1.png](a1.png)  
+4. Osio on tehty ja löytyy osoitteesta https://github.com/NicklasHH/summer-task  
+    ![a2.png](a2.png)  
 
 ##### Osion lähteet: (Karvinen 2024)
 
