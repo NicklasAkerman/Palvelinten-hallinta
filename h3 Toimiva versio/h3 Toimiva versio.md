@@ -240,7 +240,10 @@ Tämä tehtävä oli vapaahetoinen. Tehtävänä oli kokeilla Gittiä eri käytt
     - Ulkoasu oli kuitenkin väärä = riviä ei ollut vaihdettu, joten komennolla `micro README.md` avasin vielä readme tiedoston ja lisäsin kaksi välilyöntiä sanan `summer` perään ja tallensin tiedoston
     - Kokeilin antaa komennon `git add . && git commit -m "Edit README.md"; git push` ja nyt GitHubissa oli halutunlainen ulkoasu  
       ![f5.png](f5.png)
-
+5. Lopuksi katsoin vielä paiksellisella koneella logia
+    - Ensin hain muutokset komennolla `git pull`  
+    - Annoin komennon `git log` ja muutokset näkyivät logissa. Varmennuksena se, että nimenä on `Nicklas Fedoralla`
+      ![f6.png](f6.png)
 ##### Omia havaintoja
 Linux-palvelimet ja Palvelinten-hallinta kurssilta opitut komennot toivivat hyvin pitkälti myös Fedoralla. Tässä osiossa ainoastaan dnf oli eroavaisuutena aikaisemmin käyttämäni debianin apt-get komentoon.
 
