@@ -168,8 +168,9 @@ Tehtävänä oli asentaa Apache ja korvata sen testisivu ja ajaa asianmukaiset t
 ---
 
 ## d) SSHouto
-Tehtävänä oli lisätä uusi portti, jossa SSHd kuuntelee. 
-1. Aloitin homman komennolla `vagrant destroy` bullseye kansiossa, jotta pystyin aloittamaan puhtaalta pöydältä komennolla `vagrant up` ja `vagrant ssh tmaster`
+Tehtävänä oli lisätä uusi portti, jossa SSHd kuuntelee.  Poistin osion dokumentoinnin ja aloitin alusta tämän tehtävän kertaalleen, koska ymmärsin tehtävän väärin. Alustin siis myös virtuaalikoneen uudelleen komennoin `vagrant destroy` sekä `vagrant up`
+
+1. Kirjauduin sisään puhtaalle virtuaalikoneelle komennolla `vagrant ssh tmaster`
 2. Asensin micron ja asetin sen oletuseditoriksi `sudo apt-get -y install micro` ja `export EDITOR='micro'`
 3. Hyväksyin testikoneet komennolla `sudo salt-key -A` ja testasin pingata niihin komennolla `sudo salt '*' test.ping`
 4. Otin testikoneiden ip ylös komennolla `sudo salt '*' cmd.run 'hostname -I'`:  
@@ -179,26 +180,76 @@ Tehtävänä oli lisätä uusi portti, jossa SSHd kuuntelee.
         - 10.0.2.15 192.168.12.102  
 
 5. Loin kansiorakenteen salttia varten komennolla `sudo mkdir -p /srv/salt/`
-6. Loin tiedoston `sshd.sls` komennolla sudoedit `/srv/salt/sshd.sls`  
+6. Loin tiedoston `sshd.sls` komennolla `sudoedit /srv/salt/sshd.sls`  
   ![d1.png](d1.png)
-7. Muokkasin sshd_config tiedostoa komennolla `sudoedit /etc/ssh/sshd_config` siten, että lisäsin sinne omille riveilleen tekstit `Port 22` ja `Port 1234`
+7. Kopioin alkuperäisen sshd_config tiedoston komennolla `sudo cp /etc/ssh/sshd_config /srv/salt/` 
 
-8. Halusin seurata ssh statusta, joka onnistuu komennolla `sudo systemctl status ssh` ja restart onnistuu komennolla `sudo systemctl restart ssh` (Gite 2024)
+8. Muokkasin kopioitua sshd_config tiedostoa niin, että lisäsin sinne rivit `Port 22` ja `Port 1234` komennolla `sudoedit /srv/salt/sshd_config`
 
-9. Status kertoi, että ssh ei käynnisty uudestaan kun vaihdan sshd_config tiedoston sisältöä. katsoin uudestaan sshd.sls tiedostoa ja tulin lopputulokseen, että minun tulee kopioida alkuperäinen sshd tiedosto salttiin.
+9. Ajoin tilan paikallisesti komennolla `sudo salt-call --local state.apply sshd` ja kaikki onnistui.
 
-10. Kopioin siis alkuperäisen sshd_config tiedoston komennolla `sudo cp /etc/ssh/sshd_config /srv/salt/` mutta status ei vieläkään muuttunut, vaikka muokkasin molempia `sshd_config` tiedostoja. Testasin myös katsoa ssh statusta t001 koneella, mutta sielläkään ei vaikuta vaikka muokkaan `/etc/ssh/sshd_config` tiedostoa.
+11. Lisäsin komennolla `sudoedit /srv/salt/sshd_config` uuden portin 2000 ja ajoin komennon `sudo salt-call --local state.apply sshd` joka kertoi, että portti 2000 lisättiin. 
+
+10. Halusin seurata ssh statusta, joka onnistuu komennolla `sudo systemctl status ssh` ja se oli käynnistynyt uudestaan muutama sekunti sitten, joten voidaan todeta ainakin sen osan toimivan. (restart onnistuu komennolla `sudo systemctl restart ssh`)(Gite 2024)
+
+11. Vielä tulee varmistaa, että pyydetyt portit ovat auki ja se onnistuu komennolla `sudo lsof -i -P -n | grep LISTEN` (NicklasHH)  
+  ![d2.png](d2.png)
+
+12. Poistin vielä portit 1234 ja 2000 sekä lisäsin portin 8888 jonka jälkeen ajoin komennon `sudo salt-call --local state.apply sshd` ja `sudo lsof -i -P -n | grep LISTEN`  
+  ![d3.png](d3.png)
 
 
-###### Osion lähteet: (Karvinen 2018, Karvinen 2024)
+###### Osion lähteet: (Karvinen 2018, Karvinen 2024, Gite 2024, NicklasHH)
 
 ---
 
 ## e) Vapaaehtoinen: Apache.
 Tehtävänä oli asentaa Apache niin, että weppivu näkyy localhostissa, html:n tulee olla kotihakemistossa ja voidaan muokata ilman sudo oikeuksia.
-1. 
 
-###### Osion lähteet: (Karvinen 2024)
+1. Aloitin siirtymällä terminaalissa oikeaan polkuun, kirjoittamalla `vagrant up` joka loi kaksi tyhjää virtuaalikonetta ja yhdistin toiseen komennolla `vagrant ssh testi1`. Tiedostossa on määritelty asennukset tree, micro ja curl.
+2. Aloitin manuaalisella asennuksella  
+    >sudo apt-get update  
+    >sudo apt-get -y install apache2  
+    >export EDITOR='micro  
+    >mkdir public_html; cd public_html;micro index.html (index.html sisältää Testisivu)  
+    >curl localhost <- Tarkistin että apache päällä  
+    >sudoedit /etc/apache2/sites-available/index.conf    
+    >![e1.png](e1.png)
+    >sudo a2ensite index.conf  
+    >sudo a2dissite 000-default.conf  
+    >sudo systemctl restart apache2  
+    >curl localhost <-- Palautti "Testisivu"  
+
+3. Tein Saltille kansion ja sinne kansion Apachea varten komennolla `sudo mkdir -p /srv/salt/apache` jonka jälkeen tein init.sls tiedoston komennolla `sudoedit /srv/salt/apache/init.sls`
+
+4. Kirjoitin init.sls osion vaihe kerrallaan, ensin apachen asennus:  
+        ![e2.png](e2.png)
+
+5. Ajoin komennon `sudo salt-call --local state.apply apache` ja huomasin etten ole vielä asentanut salttia, joten asensin sen komennolla `sudo apt-get install salt-master` ja ajoin uudestaan apachen asennus tilan: `sudo salt-call --local state.apply apache`
+
+6. Koska asennus meni läpi, seuraavaksi vuorossa oli lisätä init.sls kansioon File osio:   
+        ![e3.png](e3.png)
+7. Tein myös apache kansioon kopion alkuperäisestä index.conf tiedostosta komennolla `sudo cp /etc/apache2/sites-available/index.conf /srv/salt/apache` 
+
+8. Ajoin komennon `sudo salt-call --local state.apply apache` ja ei tullut virheitä, joten lisäsin service ja watch osion init.sls tiedostoon:  
+        ![e4.png](e4.png)
+
+**Osion pitäisi toimia nyt myös minionilla**
+1. Annoin komennon `vagrant ssh testi2` uudella terminaalilla
+2. Asensin salt-minionin komennolla `sudo apt-get install salt-minion`
+3. Annoin komennon `sudoedit /etc/salt/minion` ja lisäsin ylimmälle riville: `master: 192.168.88.101` ja tämän alapuolelle `id: testi2` jonka jälkeen annoin komennon `sudo systemctl restart salt-minion.service`
+4. Masterilla annoin komennon `sudo salt-key -A` ja hyväksyin testi2 koneen.
+5. `curl localhost` antoi testi2 koneella 403 forbidden, joten tein sinne kansiot ja index.html tiedoston `mkdir public_html; cd public_html;micro index.html` jonka jälkeen localhostin curlaus palautti index.html sisällön. Seuraavaksi oli siis vuorossa myös noiden tekeminen automaattisesti
+6. Masterilla siis lisäsin apache kansioon `index.html` jonka sisälle kirjoitin "testiajoa"
+
+7. Noin 2 tunnin kokeilun ja lukemisen jälkeen sain vihdoin toimimaan tilan niin, että se luo index.html tiedoston public_html kansioon, jos sitä ei ole olemassa. Jos se on olemassa, ei tehdä mitään. Edelleen joudun syöttämään Userin, Groupin ja polun tiedostoon itse ja se oli liian iso pala purtavaksi tässä kohtaa.(VMware 2024)  
+  ![e5.png](e5.png)
+
+8. Testasin ensin niin, että public_html kansiota ei ole, ajoin komennon `sudo salt '*' state.apply apache` joka loi public_html kansion jonka sisään index.html tiedoston. Ajoin komennon `curl localhost` joka päivittyi, jonka jälkeen muokkasin index.html tiedostoa ja ajoin `curl localhostin` ja lopuksi ajoin vielä `sudo salt '*' state.apply apache` jonka jälkeen `curl localhost` ei muuttunut vakioetusivuksi.  
+  ![e6.png](e6.png)
+
+
+###### Osion lähteet: (Karvinen 2024, VMware 2024)
 
 ---
 
@@ -218,12 +269,17 @@ Tehtävänä oli asentaa Nginx niin, että weppivu näkyy localhostissa, html:n 
 
 ## Lähdeluettelo
 
+Gite, V. 2024. Ubuntu Linux: Start, Stop, Restart, Reload OpenSSH Server. Luettavissa: https://www.cyberciti.biz/faq/howto-start-stop-ssh-server/. Luettu: 19.4.2024.
+
 Karvinen, T. 2018. Pkg-File-Service – Control Daemons with Salt – Change SSH Server Port. Luettavissa: https://terokarvinen.com/2018/pkg-file-service-control-daemons-with-salt-change-ssh-server-port/. Luettu: 18.4.2024.
 
 Karvinen, T. 2023. Salt Vagrant - automatically provision one master and two slaves. Luettavissa: https://terokarvinen.com/2023/salt-vagrant/. Luettu: 18.4.2024.
 
 Karvinen, T. 2024. Infra as Code - Palvelinten hallinta 2024. Luettavissa: https://terokarvinen.com/2024/configuration-management-2024-spring/. Luettu: 18.4.2024.
 
+NicklasHH. 2024. Viikon palautus 7. Luettavissa: https://github.com/NicklasHH/Linux-palvelimet/blob/master/h7%20Maalisuora/Palautus7.md. Luettu: 19.4.2024.
+
 VMware S.A. Salt overview. Luettavissa: https://docs.saltproject.io/salt/user-guide/en/latest/topics/overview.html#salt-overview. Luettu: 18.4.2024.
 
-Gite, V. 2024. Ubuntu Linux: Start, Stop, Restart, Reload OpenSSH Server. Luettavissa: https://www.cyberciti.biz/faq/howto-start-stop-ssh-server/. Luettu: 19.4.2024.
+
+VMware 2024. SALT.STATES.FILE. Luettavissa: https://docs.saltproject.io/en/latest/ref/states/all/salt.states.file.html. Luettu: 19.4.2024.
