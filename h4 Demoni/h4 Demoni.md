@@ -181,7 +181,6 @@ Tehtävänä oli lisätä uusi portti, jossa SSHd kuuntelee.
 5. Loin kansiorakenteen salttia varten komennolla `sudo mkdir -p /srv/salt/`
 6. Loin tiedoston `sshd.sls` komennolla sudoedit `/srv/salt/sshd.sls`  
   ![d1.png](d1.png)
-
 7. Muokkasin sshd_config tiedostoa komennolla `sudoedit /etc/ssh/sshd_config` siten, että lisäsin sinne omille riveilleen tekstit `Port 22` ja `Port 1234`
 
 8. Halusin seurata ssh statusta, joka onnistuu komennolla `sudo systemctl status ssh` ja restart onnistuu komennolla `sudo systemctl restart ssh` (Gite 2024)
