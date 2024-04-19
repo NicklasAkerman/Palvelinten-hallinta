@@ -149,8 +149,8 @@ Tehtävänä oli asentaa Apache ja korvata sen testisivu ja ajaa asianmukaiset t
 
 **Nyt olen testannut manuaalisen asennuksen, joten voin automatisoida homman:**
 1. Aloitin luomalla uuden kansion `sudo mkdir -p /srv/salt/apache`
-2. Tein init.sls tiedoston komennolla `sudoedit /srv/salt/apache/init.sls`
-    ![c2.png](c2.png)
+2. Tein init.sls tiedoston komennolla `sudoedit /srv/salt/apache/init.sls`  
+  ![c2.png](c2.png)
 3. Lisäsin polkuun /srv/salt tiedoston `index.html` joka sai sisällöksi `TestaajaPRO2`
 4. Tässä kohtaa hyväksyin avaimet kahdesta muusta virtuaalikoneesta komennolla `sudo salt-key -A` ja vastasin `Y`
 5. Testasin saanko yhteyden molempiin minioneihin komennolla `sudo salt '*' test.ping`
@@ -179,7 +179,7 @@ Tehtävänä oli lisätä uusi portti, jossa SSHd kuuntelee.
         - 10.0.2.15 192.168.12.102  
 
 5. Loin kansiorakenteen salttia varten komennolla `sudo mkdir -p /srv/salt/`
-6. Loin tiedoston `sshd.sls` komennolla sudoedit `/srv/salt/sshd.sls`
+6. Loin tiedoston `sshd.sls` komennolla sudoedit `/srv/salt/sshd.sls`  
   ![d1.png](d1.png)
 
 7. Muokkasin sshd_config tiedostoa komennolla `sudoedit /etc/ssh/sshd_config` siten, että lisäsin sinne omille riveilleen tekstit `Port 22` ja `Port 1234`
