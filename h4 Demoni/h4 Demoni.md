@@ -71,7 +71,7 @@ Tehtävänä oli lukea ja tiivistää artikkeli muutaman ranskalaisen viivan avu
 - Artikkelissa käydään läpi kuinka Salt-tilan avulla muutetaan SSH-palvelimen porttia  
 - Alkutilanne vaatii saltin herra-orja arkkitehtuurin. Masterille tehdään tila (sshd.sls) ja konfiguraatiotiedoston master-kopio(sshd_config)  
 
-1. Ensin luotiin SSH tila
+1. Ensin luotiin SSH tila  
     ![x1.png](x1.png)  
 2. Sitten muutettiin sshd_config tiedostoon portin numero ja poistettiin kommentit
 3. Ajettiin tila orjalle `sudo salt '*' state.apply sshd`
@@ -214,7 +214,7 @@ Tehtävänä oli asentaa Apache niin, että weppivu näkyy localhostissa, html:n
     >mkdir public_html; cd public_html;micro index.html (index.html sisältää Testisivu)  
     >curl localhost <- Tarkistin että apache päällä  
     >sudoedit /etc/apache2/sites-available/index.conf    
-    >![e1.png](e1.png)
+    >![e1.png](e1.png)  
     >sudo a2ensite index.conf  
     >sudo a2dissite 000-default.conf  
     >sudo systemctl restart apache2  
