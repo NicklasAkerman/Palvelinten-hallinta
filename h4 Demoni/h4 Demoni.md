@@ -187,8 +187,7 @@ Tehtävänä oli lisätä uusi portti, jossa SSHd kuuntelee.
 
 9. Status kertoi, että ssh ei käynnisty uudestaan kun vaihdan sshd_config tiedoston sisältöä. katsoin uudestaan sshd.sls tiedostoa ja tulin lopputulokseen, että minun tulee kopioida alkuperäinen sshd tiedosto salttiin.
 
-10. Kopioin siis alkuperäisen sshd_config tiedoston komennolla `sudo cp /etc/ssh/sshd_config /srv/salt/` mutta status ei vieläkään muuttunut, vaikka muokkasin molempia `sshd_config` tiedostoja.
-
+10. Kopioin siis alkuperäisen sshd_config tiedoston komennolla `sudo cp /etc/ssh/sshd_config /srv/salt/` mutta status ei vieläkään muuttunut, vaikka muokkasin molempia `sshd_config` tiedostoja. Testasin myös katsoa ssh statusta t001 koneella, mutta sielläkään ei vaikuta vaikka muokkaan `/etc/ssh/sshd_config` tiedostoa.
 
 
 ###### Osion lähteet: (Karvinen 2018, Karvinen 2024)
