@@ -268,7 +268,7 @@ Tehtävänä oli asentaa Nginx niin, että weppivu näkyy localhostissa, html:n 
 4. Annoin komennon `sudoedit /etc/nginx/sites-available/default` ja kommentoin rivin 41 root polun pois ja lisäsin sen alle oman polun `root /home/vagrant/public_html;`
 5. Annoin komennon `curl localhost` joka palautti `Testisivu` kuten index.html on tarkoitus.
 6. Koska tämä toimi, palautin rivin 41 takaisin ja poistin lisäämäni oman hakemiston, jotta voin tehdä oman sites-available tiedoston.
-7. Annoin komennon `sudoedit /etc/nginx/sites-available/testisivu`
+7. Annoin komennon `sudoedit /etc/nginx/sites-available/testisivu`  
   ![g1.png](g1.png)
 8. Aktivoin tekemäni tiedoston komennolla `sudo ln -s /etc/nginx/sites-available/testisivu /etc/nginx/sites-enabled/`
 9. Käynnistin nginx uudelleen komennolla `sudo systemctl restart nginx` ja annoin komennon `curl localhost` joka palautti jotain apacheen liittyvää, joten siirryin polkuun `/etc/nginx/sites-enabled` jossa poistin default tiedoston komennolla `sudo rm default`
@@ -299,6 +299,7 @@ Tehtävänä oli asentaa Nginx niin, että weppivu näkyy localhostissa, html:n 
 10. Annoin komennon `sudo salt 'testi2' state.apply nginx` ja kaikkien tilojen ajo onnistui.
 
 11. Testasin testi2 koneella `curl localhost` sekä `sudo systemctl status nginx` joten totesin osion toimivan. 
+
 ###### Osion lähteet: (Karvinen 2024, Syjaka 2024)
 
 ---
