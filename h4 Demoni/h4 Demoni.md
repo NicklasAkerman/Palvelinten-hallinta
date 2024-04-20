@@ -306,6 +306,8 @@ Tehtävänä oli asentaa Nginx niin, että weppivu näkyy localhostissa, html:n 
 
 ## Lähdeluettelo
 
+Andrey, X. 2023. STEP-BY-STEP GUIDE TO INSTALLING NGINX ON DEBIAN 11. Luettavissa: https://friendhosting.net/en/blog/install-nginx-on-debian-11.php. Luettu: 20.4.2024.
+
 Gite, V. 2024. Ubuntu Linux: Start, Stop, Restart, Reload OpenSSH Server. Luettavissa: https://www.cyberciti.biz/faq/howto-start-stop-ssh-server/. Luettu: 19.4.2024.
 
 Karvinen, T. 2018. Pkg-File-Service – Control Daemons with Salt – Change SSH Server Port. Luettavissa: https://terokarvinen.com/2018/pkg-file-service-control-daemons-with-salt-change-ssh-server-port/. Luettu: 18.4.2024.
@@ -316,12 +318,9 @@ Karvinen, T. 2024. Infra as Code - Palvelinten hallinta 2024. Luettavissa: https
 
 NicklasHH. 2024. Viikon palautus 7. Luettavissa: https://github.com/NicklasHH/Linux-palvelimet/blob/master/h7%20Maalisuora/Palautus7.md. Luettu: 19.4.2024.
 
+Syjaka. 2024. h3 Toimiva versio. Luettavissa: https://github.com/syjaka/Palvelinten-Hallinta-2024/blob/main/h3_Toimiva_versio.md. Luettu: 20.4.2024.
+
 VMware S.A. Salt overview. Luettavissa: https://docs.saltproject.io/salt/user-guide/en/latest/topics/overview.html#salt-overview. Luettu: 18.4.2024.
 
 
 VMware 2024. SALT.STATES.FILE. Luettavissa: https://docs.saltproject.io/en/latest/ref/states/all/salt.states.file.html. Luettu: 19.4.2024.
-
-
-Andrey, X. 2023. STEP-BY-STEP GUIDE TO INSTALLING NGINX ON DEBIAN 11. Luettavissa: https://friendhosting.net/en/blog/install-nginx-on-debian-11.php. Luettu: 20.4.2024.
-
-Syjaka. 2024. h3 Toimiva versio. Luettavissa: https://github.com/syjaka/Palvelinten-Hallinta-2024/blob/main/h3_Toimiva_versio.md. Luettu: 20.4.2024.
