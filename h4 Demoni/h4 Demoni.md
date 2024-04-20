@@ -255,7 +255,7 @@ Tehtävänä oli asentaa Apache niin, että weppivu näkyy localhostissa, html:n
 
 ## f) Vapaaehtoinen: Caddy.
 Tehtävänä oli asentaa Caddy niin, että weppivu näkyy localhostissa, html:n tulee olla kotihakemistossa ja voidaan muokata ilman sudo oikeuksia.
-1. Alkuun testasin, että `curl localhost` ei vastaa 
+1. 
 
 ###### Osion lähteet: (Karvinen 2024)
 ---
