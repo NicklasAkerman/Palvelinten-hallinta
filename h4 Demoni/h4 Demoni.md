@@ -255,15 +255,51 @@ Tehtävänä oli asentaa Apache niin, että weppivu näkyy localhostissa, html:n
 
 ## f) Vapaaehtoinen: Caddy.
 Tehtävänä oli asentaa Caddy niin, että weppivu näkyy localhostissa, html:n tulee olla kotihakemistossa ja voidaan muokata ilman sudo oikeuksia.
-1. 
+1. Alkuun testasin, että `curl localhost` ei vastaa 
 
 ###### Osion lähteet: (Karvinen 2024)
 ---
 
 ## g) Vapaaehtoinen: Nginx.
-Tehtävänä oli asentaa Nginx niin, että weppivu näkyy localhostissa, html:n tulee olla kotihakemistossa ja voidaan muokata ilman sudo oikeuksia.
-1. 
-###### Osion lähteet: (Karvinen 2024)
+Tehtävänä oli asentaa Nginx niin, että weppivu näkyy localhostissa, html:n tulee olla kotihakemistossa ja voidaan muokata ilman sudo oikeuksia. Tein tehtävää pitkälti seuraamalla löytämiäni ohjeita ja niitä soveltamalla(Andrey 2023).
+1. Alkuun tetasin, että `curl localhost` ei vastaa mitään sivustoa.
+2. Annoin komennon nginx asennusta varten `sudo apt install nginx`
+3. Asennus vei noin minuutin, jonka jälkeen tarkistin, että se oli päällä komennolla `sudo systemctl status nginx`
+4. Annoin komennon `sudoedit /etc/nginx/sites-available/default` ja kommentoin rivin 41 root polun pois ja lisäsin sen alle oman polun `root /home/vagrant/public_html;`
+5. Annoin komennon `curl localhost` joka palautti `Testisivu` kuten index.html on tarkoitus.
+6. Koska tämä toimi, palautin rivin 41 takaisin ja poistin lisäämäni oman hakemiston, jotta voin tehdä oman sites-available tiedoston.
+7. Annoin komennon `sudoedit /etc/nginx/sites-available/testisivu`
+  ![g1.png](g1.png)
+8. Aktivoin tekemäni tiedoston komennolla `sudo ln -s /etc/nginx/sites-available/testisivu /etc/nginx/sites-enabled/`
+9. Käynnistin nginx uudelleen komennolla `sudo systemctl restart nginx` ja annoin komennon `curl localhost` joka palautti jotain apacheen liittyvää, joten siirryin polkuun `/etc/nginx/sites-enabled` jossa poistin default tiedoston komennolla `sudo rm default`
+10. Käynnistin nginx uudelleen komennolla `sudo systemctl restart nginx` ja `curl localhost` palautti `Testisivu`, kuten kuului
+11. Varmistin vielä toimivuuden muokkaamalla `index.html` sivun sisältöä, jonka jälkeen `curl localhost` palautti muutetun sisällön
+
+###### Osion lähteet: (Andrey 2023, Karvinen 2024)
+
+**Tässä kohtaa manuaalinen asennus oli suoritettu, joten yritin saada toimimaan saltilla**
+
+1. Aloitin homman tekemällä salt kansioon nginx kansion komennolla `sudo mkdir /srv/salt/nginx`
+2. Loin `init.sls` kansion komennolla `sudoedit /srv/salt/nginx/init.sls` jonnne ensimmäisenä lisäsin nginx asennuksen  
+  ![g2.png](g2.png)
+
+3. Komennolla `sudo salt-call --local state.apply nginx` varmistin, että osio toimii
+4. Kopioin testiviun sites-availablesta komennolla `sudo cp /etc/nginx/sites-available/testisivu /srv/salt/nginx`
+5. Muokkasin init.sls tiedostoon liittyvät asetukset sekä servicen:  
+  ![g3.png](g3.png)
+
+6. Komennolla `sudo salt-call --local state.apply nginx` ajoin tilan, ja kaikki vaikutti olleen hyvin. 
+
+7. Ajoin komennon `sudo salt 'testi2' state.apply nginx` jotta tila ajetaan testi2 koneelle, mutta virheitä tuli paljon:   
+  ![g4.png](g4.png)
+8. Testi1 koneella kuitenkin ajo onnistuu, joten siirryin testi2 koneelle ja ajoin komennon `sudo systemctl stop apache2` mikä ei vaikuttanut mihinkään.
+
+9. Lueskeltuani virheitä, tulin tarkistaneeksi virtuaalikoneen ajan, ja se näytti edellistä päivää ja muistin lukeneeni edellisen viikon tehtävistä, kuinka se korjataan. Annoin siis komennot `sudo apt-get -y install ntp`, `sudo systemctl enable --now ntp` ja `date` ohjeiden mukaan ja aika oli oikea. (syjaka 2024)
+
+10. Annoin komennon `sudo salt 'testi2' state.apply nginx` ja kaikkien tilojen ajo onnistui.
+
+11. Testasin testi2 koneella `curl localhost` sekä `sudo systemctl status nginx` joten totesin osion toimivan. 
+###### Osion lähteet: (Karvinen 2024, Syjaka 2024)
 
 ---
 
@@ -283,3 +319,8 @@ VMware S.A. Salt overview. Luettavissa: https://docs.saltproject.io/salt/user-gu
 
 
 VMware 2024. SALT.STATES.FILE. Luettavissa: https://docs.saltproject.io/en/latest/ref/states/all/salt.states.file.html. Luettu: 19.4.2024.
+
+
+Andrey, X. 2023. STEP-BY-STEP GUIDE TO INSTALLING NGINX ON DEBIAN 11. Luettavissa: https://friendhosting.net/en/blog/install-nginx-on-debian-11.php. Luettu: 20.4.2024.
+
+Syjaka. 2024. h3 Toimiva versio. Luettavissa: https://github.com/syjaka/Palvelinten-Hallinta-2024/blob/main/h3_Toimiva_versio.md. Luettu: 20.4.2024.
