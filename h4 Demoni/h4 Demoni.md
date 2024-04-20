@@ -248,6 +248,8 @@ Tehtävänä oli asentaa Apache niin, että weppivu näkyy localhostissa, html:n
 8. Testasin ensin niin, että public_html kansiota ei ole, ajoin komennon `sudo salt '*' state.apply apache` joka loi public_html kansion jonka sisään index.html tiedoston. Ajoin komennon `curl localhost` joka päivittyi, jonka jälkeen muokkasin index.html tiedostoa ja ajoin `curl localhostin` ja lopuksi ajoin vielä `sudo salt '*' state.apply apache` jonka jälkeen `curl localhost` ei muuttunut vakioetusivuksi.  
   ![e6.png](e6.png)
 
+Lopetin osion komennolla `sudo systemctl stop apache2`
+
 
 ###### Osion lähteet: (Karvinen 2024, VMware 2024)
 
@@ -299,6 +301,8 @@ Tehtävänä oli asentaa Nginx niin, että weppivu näkyy localhostissa, html:n 
 10. Annoin komennon `sudo salt 'testi2' state.apply nginx` ja kaikkien tilojen ajo onnistui.
 
 11. Testasin testi2 koneella `curl localhost` sekä `sudo systemctl status nginx` joten totesin osion toimivan. 
+
+Lopetin osion antamalla komennon `sudo systemctl stop nginx`
 
 ###### Osion lähteet: (Karvinen 2024, Syjaka 2024)
 
