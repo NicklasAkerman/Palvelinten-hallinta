@@ -284,7 +284,7 @@ Tehtävänä oli asentaa Caddy niin, että weppivu näkyy localhostissa, html:n 
 1. Tein caddya varten oman kansion komennolla `sudo mkdir -p /srv/salt/caddy` jonka jälkeen tein sinne init tiedoston komennolla `sudoedit /srv/salt/caddy/init.sls`
 2. Tässä kohtaa alkoihin selvitystyö, koska Caddyn asennus ei ollut pelkkä install caddy. Vastauksen uskoin löytäneeni GitHubin reposta https://github.com/saltstack/salt/issues/29621 joten testasin listata kaikki asentamani paketit:  
   ![f4.png](f4.png)
-3. Testain ajaa komennon `sudo salt-call --local state.apply caddy` joka hiukan yllättäen onnistui. 
+3. Testain ajaa komennon `sudo salt-call --local state.apply caddy` joka hiukan yllättäen onnistui.  
   ![f5.png](f5.png)
 
 4. Päätin testata tätä heti myös testi2 koneelle, jossa ensin tarkistin pyöriikö siellä jokin serveri komennolla `curl localhost -I` ja koska siellä pyöri apache, suljin sen komennolla `sudo systemctl stop apache2` ja uudelleen curlasin localhostin.
@@ -295,7 +295,7 @@ Tehtävänä oli asentaa Caddy niin, että weppivu näkyy localhostissa, html:n 
 6. Ajattelin virheen olevan siinä, että Alkuperäinen asennus tapahtui kahdessa osassa, joten myös init.sls osassa tulisi jakaa. Jaoin siis asennuksen kahteen osaan, missä toiseen osaan annoin samat komennot, kuin manuaalisessa caddyn asennuksessa.  
   ![f7.png](f7.png)
 
-7. Ajaessani tilaa, ei sitä voinut enää ajaa ja uskon sen johtuvan siitä, että Caddy osion komennot pitävät sisällään muutakin, kuin itse asennuksen. 
+7. Ajaessani tilaa, ei sitä voinut enää ajaa ja uskon sen johtuvan siitä, että Caddy osion komennot pitävät sisällään muutakin, kuin itse asennuksen.   
   ![f8.png](f8.png)
 
 8. Tässä kohtaa päätin jättää osion tähän, koska on liikaa selvitettävää sen suhteen, kuinka tämä asennus tulisi tehdä. Voisin toki kopioida esimerkiksi manuaalisen asennuksen yhteydessä tehdyn `/etc/apt/sources.list.d/caddy-stable.list` tiedoston, mutta silloin asennus ei toimisi jos masterilla ei caddya ole ja uskon, että tähän löytyisi parempi ratkaisu.
