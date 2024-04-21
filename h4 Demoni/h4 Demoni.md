@@ -257,9 +257,50 @@ Lopetin osion komennolla `sudo systemctl stop apache2`
 
 ## f) Vapaaehtoinen: Caddy.
 Tehtävänä oli asentaa Caddy niin, että weppivu näkyy localhostissa, html:n tulee olla kotihakemistossa ja voidaan muokata ilman sudo oikeuksia.
-1. 
+1. Yritin asentaa Caddyn komennolla `sudo apt-get install -y curl debian-keyring debian-archive-keyring apt-transport-https` jonka löysin Caddyn omasta dokumentaatiosta (ZeroSSL 2024) sekä shapehostin ohjeesta (Wells 2023) mutta jostain syystä sain palautuksena vain virheen `Err:1 https://deb.debian.org/debian bullseye/main amd64 apt-transport-https all 2.2.4 Temporary failure resolving 'deb.debian.org'` joka jatkui kunnes pysäytin sen manuaalisesti.
+2. Seuraavaksi koitin curlata googlea `curl -L http://www.google.com` mutta mitään ei palautunut joten poistuin virtuaalikoneelta ja annoin komennon `vagrant restart` ja `vagrant ssh testi1` jonka jälkeen komento `curl -L http://www.google.com` toimi. Huomiona se, että vaikka caddyn asennuskomennossa asennetaan curl, olin asentanut sen jo aikaisemmin, jonka takia pystyin käyttämään curl komentoa. 
+3. Yritin uudelleen ajaa komennon `sudo apt-get install -y curl debian-keyring debian-archive-keyring apt-transport-https` ja tällä kertaa asennus onnistui alle minuutissa. Jatkan komentojen antamista, mitkä löytyi Caddyn omasta dokumentaatiosta:
+    >curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg  
+    >curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list  
+    >sudo apt update  
+    >sudo apt install caddy  
 
-###### Osion lähteet: (Karvinen 2024)
+4. Komennolla `curl localhost` lähti jokin serveri päälle, koska palautuksena tuli `Uusi testisivu`. Annoin komennon `systemctl status caddy.service` ja selkiytyi, ettei caddy toimi  
+    ![f1.png](f1.png)
+
+5. Annoin komennon `curl -I localhost` joka palautti serverin olevan nginx, joten suljin sen komennolla `sudo systemctl stop nginx` ja kokeilin komentoa `sudo systemctl start caddy` jonka jälkeen `curl -I localhost` kertoi käytössä olevan caddy serveri. Myös `curl localhost` palautti caddyn vakiosivun.
+
+6. Navigoin polkuun `/etc/caddy` ja annoin komennon `ls` ja löysin ainoastaan tiedoston `Caddyfile` johon yritin siirtyä, mutta se ei ole kansio vaan tiedosto, joten annoin komennon `cat Caddyfile` jotta saan tietää sen sisällön.  
+  ![f2.png](f2.png)
+
+7. Muokkasin siis tiedostoa komennolla `sudoedit Caddyfile` ja kokeilin antaa root osioon poluksi `/home/vagrant/public_html`
+
+8. Komennolla `curl localhost` mikään ei muuttunut, joten ensimmäisenä päätin kokeilla caddyn uudelleenkäynnistystä komennolla `sudo systemctl restart caddy`
+9. Hiukan yllättäen, komento ei palauttanut virheitä, joten se teki jotain(arvasin komennon apachen käytön perusteella) joten annoin komennon `curl localhost` joka palautti "Uusi testisivu"
+10. Muokkasin vielä `index.html` tiedostoa joka oli `public_html` kansiossa ja muutokset näkyivät  
+  ![f3.png](f3.png)
+
+**Manuaalinen asennus onnistui, joten siirryin salt osuuteen**
+1. Tein caddya varten oman kansion komennolla `sudo mkdir -p /srv/salt/caddy` jonka jälkeen tein sinne init tiedoston komennolla `sudoedit /srv/salt/caddy/init.sls`
+2. Tässä kohtaa alkoihin selvitystyö, koska Caddyn asennus ei ollut pelkkä install caddy. Vastauksen uskoin löytäneeni GitHubin reposta https://github.com/saltstack/salt/issues/29621 joten testasin listata kaikki asentamani paketit:  
+  ![f4.png](f4.png)
+3. Testain ajaa komennon `sudo salt-call --local state.apply caddy` joka hiukan yllättäen onnistui. 
+  ![f5.png](f5.png)
+
+4. Päätin testata tätä heti myös testi2 koneelle, jossa ensin tarkistin pyöriikö siellä jokin serveri komennolla `curl localhost -I` ja koska siellä pyöri apache, suljin sen komennolla `sudo systemctl stop apache2` ja uudelleen curlasin localhostin.
+
+5. Annoin masterilla komennon `sudo salt 'testi2' state.apply caddy` mutta asennus ei onnistunut.  
+  ![f6.png](f6.png)
+
+6. Ajattelin virheen olevan siinä, että Alkuperäinen asennus tapahtui kahdessa osassa, joten myös init.sls osassa tulisi jakaa. Jaoin siis asennuksen kahteen osaan, missä toiseen osaan annoin samat komennot, kuin manuaalisessa caddyn asennuksessa.  
+  ![f7.png](f7.png)
+
+7. Ajaessani tilaa, ei sitä voinut enää ajaa ja uskon sen johtuvan siitä, että Caddy osion komennot pitävät sisällään muutakin, kuin itse asennuksen. 
+  ![f8.png](f8.png)
+
+8. Tässä kohtaa päätin jättää osion tähän, koska on liikaa selvitettävää sen suhteen, kuinka tämä asennus tulisi tehdä. Voisin toki kopioida esimerkiksi manuaalisen asennuksen yhteydessä tehdyn `/etc/apt/sources.list.d/caddy-stable.list` tiedoston, mutta silloin asennus ei toimisi jos masterilla ei caddya ole ja uskon, että tähän löytyisi parempi ratkaisu.
+
+###### Osion lähteet: (Karvinen 2024, ZeroSSL 2024, Wells 2023)
 ---
 
 ## g) Vapaaehtoinen: Nginx.
@@ -282,7 +323,7 @@ Tehtävänä oli asentaa Nginx niin, että weppivu näkyy localhostissa, html:n 
 **Tässä kohtaa manuaalinen asennus oli suoritettu, joten yritin saada toimimaan saltilla**
 
 1. Aloitin homman tekemällä salt kansioon nginx kansion komennolla `sudo mkdir /srv/salt/nginx`
-2. Loin `init.sls` kansion komennolla `sudoedit /srv/salt/nginx/init.sls` jonnne ensimmäisenä lisäsin nginx asennuksen  
+2. Loin `init.sls` kansion komennolla `sudoedit /srv/salt/nginx/init.sls` jonne ensimmäisenä lisäsin nginx asennuksen  
   ![g2.png](g2.png)
 
 3. Komennolla `sudo salt-call --local state.apply nginx` varmistin, että osio toimii
@@ -326,5 +367,8 @@ Syjaka. 2024. h3 Toimiva versio. Luettavissa: https://github.com/syjaka/Palvelin
 
 VMware S.A. Salt overview. Luettavissa: https://docs.saltproject.io/salt/user-guide/en/latest/topics/overview.html#salt-overview. Luettu: 18.4.2024.
 
-
 VMware 2024. SALT.STATES.FILE. Luettavissa: https://docs.saltproject.io/en/latest/ref/states/all/salt.states.file.html. Luettu: 19.4.2024.
+
+Wells, C. 2023. How to Set Up the Caddy Web Server on Debian 11. Luettavissa: https://shape.host/resources/how-to-set-up-the-caddy-web-server-on-debian-11. Luettu: 21.4.2024.
+
+ZeroSSL. 2024. Install. Luettavissa: https://caddyserver.com/docs/install. Luettu: 21.4.2024.
