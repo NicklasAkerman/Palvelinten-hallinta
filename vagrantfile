@@ -1,0 +1,39 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# Copyright 2014-2023 Tero Karvinen http://TeroKarvinen.com
+
+$minion = <<MINION
+sudo apt-get update
+sudo apt-get -qy install salt-minion micro curl
+echo "master: 192.168.12.3">/etc/salt/minion
+sudo service salt-minion restart
+echo "See also: https://terokarvinen.com/2023/salt-vagrant/"
+MINION
+
+$master = <<MASTER
+sudo apt-get update
+sudo apt-get -qy install salt-master micro curl
+echo "See also: https://terokarvinen.com/2023/salt-vagrant/"
+MASTER
+
+Vagrant.configure("2") do |config|
+	config.vm.box = "debian/bullseye64"
+
+	config.vm.define "minion1" do |minion1|
+		minion1.vm.provision :shell, inline: $minion
+		minion1.vm.network "private_network", ip: "192.168.12.100"
+		minion1.vm.hostname = "minion1"
+	end
+
+	config.vm.define "minion2" do |minion2|
+		minion2.vm.provision :shell, inline: $minion
+		minion2.vm.network "private_network", ip: "192.168.12.102"
+		minion2.vm.hostname = "minion2"
+	end
+
+	config.vm.define "master", primary: true do |master|
+		master.vm.provision :shell, inline: $master
+		master.vm.network "private_network", ip: "192.168.12.3"
+		master.vm.hostname = "master"
+	end
+end
