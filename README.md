@@ -13,5 +13,5 @@ https://terokarvinen.com/2024/configuration-management-2024-spring/
 **find -printf '%T+ %p\n' | sort** = CSI kerava = etsii sisällön = aika ja polku  
 **Tekojärjestys Package -> Service -> File**  
 **Koodijärjestys Package -> File -> Service**  
-**salt-call --local state.apply hello --file-root C:/salt** = Windowsissa saltin ajo, tässä on polkuna c:\salt\hello
+**salt-call --local state.apply hello --file-root C:/salt** = Windowsissa saltin ajo, tässä on polkuna c:\salt\hello  
 **sudo ss -lptn** = avoimet portit
