@@ -8,7 +8,7 @@ https://terokarvinen.com/2024/configuration-management-2024-spring/
 **sudo salt '*' test-ping** = Testaa ping  
 **ssh-keygen -C "Teho-pc"** = -C vaihtaa nimimerkkiä  
 **git add . && git commit -m "Lisätty tekstitiedosto" ; git pull && git push**  
-**grep -ri hakusana**  
+**grep -ri** hakusana  
 **makefile** Pääkansioon  
 **find -printf '%T+ %p\n' | sort** = CSI kerava = etsii sisällön = aika ja polku  
 **Tekojärjestys Package -> Service -> File**  
