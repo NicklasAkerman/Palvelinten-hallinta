@@ -63,19 +63,33 @@ Tehtävänä oli asentaa Salt Windowsille ja todentaa sen toiminto. Koska olin a
 
 Tehtävänä oli kerätä Windows -koneesta tietoja käyttäen grains.items toimintoa, poimia sieltä keskeisiä tietoja sekä analysoida niitä.
 
-1. abc
-
-###### Osion lähteet: ()
+1. Annoin PowerShellillä komennon `salt-call --local grains.items` joka toi antoi kaikki saatavilla olevat tiedot.
+2. Valitsin listalta näytettäväksi tiedot komennolla `salt-call --local grains.item saltversion id osfinger`.  
+  ![b1.png](b1.png)  
+   - id = Tietokoneen nimi  
+   - osfinger = käyttöjärjestelmä  
+   - Saltin versionumero  
 
 ---
 
 ## c) Kokeile Saltin file -toimintoa Windowsilla.
 
-Tehtävänä oli kokeilla Saltin file-toimintoa windowsissa.
+Tehtävänä oli kokeilla Saltin file-toimintoa windowsissa. Käytin tehtävässä apuna ensimmäisen viikon raporttiani.
 
-1. abc
+1. Tein tmp kansion ja polkuna oli `C:\Users\nickl\tmp`
 
-###### Osion lähteet: ()
+2. Annoin komennon `salt-call --local state.single file.managed C:\Users\nickl\tmp\testitiedosto.txt`.
+   - **salt-call** = Käytetään Salttia
+   - **--local** = Ajetaan paikallisesti
+   - **state.single** = Käytetään yhtä tilaa
+   - **file.managed** = Määrittelee käytettävän tilan
+   - **C:\Users\nickl\tmp\testitiedosto.txt** = Polku jota hallinnoidaan
+
+3. Tarkistin `tmp` kansiossa ollessani komennolla `ls`, että `testitiedosto.txt` löytyi
+4. Poistin tiedoston antamalla komennon `salt-call --local state.single file.absent C:\Users\nickl\tmp\testitiedosto.txt` 
+5. Tarkistin `ls` komennolla, että tiedosto oli kadonnut
+
+###### Osion lähteet: (NicklasHH 2024)
 
 ---
 
@@ -124,3 +138,5 @@ Tehtävänä oli tehdä Salt-tila, joka asentaa järjestelmään kansiollisen ko
 Karvinen, T. 2024. Infra as Code - Palvelinten hallinta 2024. Luettavissa: https://terokarvinen.com/2024/configuration-management-2024-spring/. Luettu: 27.4.2024.
 
 Valkamo, T. 2022. Using Salt with Windows. Luettavissa: https://tuomasvalkamo.com/CMS-course/week-5/. Luettu: 27.4.2024.
+
+NicklasHH. 2024. h1 Viisikko. Luettavissa: https://github.com/NicklasHH/Palvelinten-hallinta/blob/master/h1%20Viisikko/h1%20Viisikko.md. Luettu: 27.4.2024.
