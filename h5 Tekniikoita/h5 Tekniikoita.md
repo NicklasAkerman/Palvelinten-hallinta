@@ -96,10 +96,21 @@ Tehtävänä oli kokeilla Saltin file-toimintoa windowsissa. Käytin tehtäväss
 ## d) CSI Kerava.
 
 Tehtävänä oli näyttää `find` komennon avulla viimeisimmäksi muokatut tiedostot `/etc/` -hakemistosta kotihakemistosta. Kaikki käytetyt parametrit ja format string tulee selittää `man find` lähteenä käyttäen.
+Alkutoimena siirryin kansioon `C:\Users\nickl\vagrantduo` koska tiesin siellä olevan jonkun vanhan virtuaalikoneen. Annoin komennon `cat vagrantfile` ja tarkistin minkä nimisiä koneita asetustiedostossa tehtiin ja annoin komennon `vagrant up testi1` käynnistääkseni vain yhden virtuaalikoneen. Lopuksi yhdistin virtuaalikoneeseen komennolla `vagrant ssh testi1`
 
-1. abc
+1. Käytin komentoa `man find` ja tutkin mitä kaikkea voidaan käyttää find toiminnossa. Tein lisäksi uuden kansion kotihakemistoon, jotta pystyin todentamaan find komennon toimivuuden. Pohjana oli Tero Karvisen tunnilla käyttämä komento, jonka löysin tuntimuistiinpanoistani `find -printf '%T+ %p\n' | sort` ja lähdin tämän pohjalta rakentamaan komentoa. Manuaalista kiinnostuneille on siitä olemassa myös [online versio](https://man7.org/linux/man-pages/man1/find.1.html).
 
-###### Osion lähteet: ()
+2. Testailun jälkeen päätin käyttää komentoa `sudo find /etc $HOME -printf '%T+ %p\n' | sort -n | tail -10`  
+   ![d1.png](d1.png)
+   - **find** = Komento hakua varten
+   - **/etc $HOME** = Hakupaikkojen määritys, tässä käytössä /etc kansio sekä kotihakemisto
+   - **-printf '%T+ %p\n'** = Tulostus, jossa määritellään formaatti joka on tässä muokkauspäivämäärä(%T+), polku(%p) ja uusi rivi (\n)
+   - **sort -n** = Newer, eli järjestetään viimeksi muokatun mukaan
+   - **tail -10** = Näytetään kymmenen viimeisintä
+ 3. Huomasin tuloksia tutkiessa, että aikaleimat ovat kaikki tältä päivältä, joten lisäsin sort komennon perään `-r` joka kääntää hakutuloksen niin, että vanhimmat näkyy ensin, jolloin myös päivämäärät muuttuivat:  
+   ![d2.png](d2.png)
+
+###### Osion lähteet: Linuxin terminaalissa komento `man find` sekä omat tuntimuistiinpanot
 
 ---
 
