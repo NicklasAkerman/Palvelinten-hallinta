@@ -89,7 +89,7 @@ Tehtävänä oli kokeilla Saltin file-toimintoa windowsissa. Käytin tehtäväss
 4. Poistin tiedoston antamalla komennon `salt-call --local state.single file.absent C:\Users\nickl\tmp\testitiedosto.txt` 
 5. Tarkistin `ls` komennolla, että tiedosto oli kadonnut
 
-###### Osion lähteet: (NicklasHH 2024)
+###### Osion lähteet: (NicklasHH 2024a)
 
 ---
 
@@ -116,11 +116,47 @@ Alkutoimena siirryin kansioon `C:\Users\nickl\vagrantduo` koska tiesin siellä o
 
 ## e) Komennus
 
-Tehtävänä oli tehdä Salt-tila, joka asentaa järjestelmään uuden komennon.
+Tehtävänä oli tehdä Salt-tila, joka asentaa järjestelmään uuden komennon. Käytin osiossa hyödyksi Linux-palvelimet kurssin viikon 7 raporttiani ja Tero Karvisen kurssisivun ohjeistusta(NicklasHH 2024b, Karvinen 2024)
 
-1. abc
+1. Kirjauduin jo edellisessä osiossa käytettyyn testi1 virtuaalikoneeseen komennolla `vagrant ssh testi1`
+2. Tein tiedoston komentoa varten komennolla `micro omaOhjelma`. Sisällöksi kirjoitin scriptin, joka asettaa muuttujaan `user` käyttäjän nimen ja tervehtii sitä.  
+  ![e1.png](e1.png)
+3. Lisäsin suoritusoikeudet komennolla `chmod ugo+x omaOhjelma` kaikille käyttäjille (user, group ja others)
+4. Testasin scriptiä ajamalla sen komennolla `./omaOhjelma`  
+  ![e2.png](e2.png)
+5. Kopioin omaOhjelma tiedoston oikeaan paikkaan komennolla `sudo cp omaOhjelma /usr/local/bin/`
+6. Varmistin toiminnan vaihtamalla polkua ja annoin pelkän komennon ohjelman ajamiseen  
+  ![e3.png](e3.png)
+7. Tein uuden käyttän komennolla `sudo adduser testaajapro` ja kirjauduin sille komennolla `su testaajapro` ja ajoin tekemäni ohjelman komennolla `omaOhjelma`  
+  ![e4.png](e4.png)
 
-###### Osion lähteet: ()
+**Ohjelman tekeminen onnistui, joten siirryn Salt-tilan tekoon**
+1. Koska käytössä oli vanha virtuaalikone, löytyi täältä jo valmiiksi saltin kansio. Tein uutta tilaa varten uuden kansion komennolla `mkdir ohjelma`  
+  ![e5.png](e5.png)
+2. Ollessani salt kansiossa, annoin komennon `sudo cp /usr/local/bin/omaOhjelma ohjelma` joka kopioi tekemäni ohjelman saltin ohjelma kansioon.  
+  ![e6.png](e6.png)
+3. Tein init.sls tiedoston komennolla `micro init.sls` ja testasin seuraavaa: Asetin polun minne tiedosto lisätään, file.managed kertoo mitä tehdään ja source kertoo mistä lisättävä tiedosto löytyy.
+  ![e7.png](e7.png)
+4. Käynnistin toisen virtuaalikoneen komennolla `vagrant up testi2` ja yhdistin siihen komennolla `vagrant ssh testi2`
+5. Annoin testi2 koneella komennon `omaOhjelma` ja palautuksena tuli `-bash: omaOhjelma: command not found` eli komentoa ei vielä ole
+6. Ajoin testi1 koneella tilan testi2 koneelle komennolla `sudo salt 'testi2' state.apply ohjelma` mutta tilan ajaminen ei onnistunut  
+  ![e8.png](e8.png)
+7. Lisäsin 2 välilyöntiä riville 3 mutta samat virheet jatkuivat edelleen.
+  ![e9.png](e9.png)
+8. Huomasin polun olevan virheellinen source osiossa, joten korjasin myös sen  
+  ![e10.png](e10.png)
+9. Ajoin uudelleen komennon `sudo salt 'testi2' state.apply ohjelma` ja nyt tilan ajaminenn onnistui  
+  ![e11.png](e11.png)
+10. Ajoin komennon `omaOhjelma` testi2 koneella. Palautuksena komentoon tuli `-bash: /usr/local/bin/omaOhjelma: Permission denied` ja uskoin tietäväni jo, että vika on siinä, ettei Saltin tilassa määritelty käyttöoikeuksia mutta tarkistin vielä antamalla komennon `ls -l /usr/local/bin/omaOhjelma` ja siellä tosiaan oli ainoastaan lukuoikeudet.
+
+11. Tiesin, että init.sls tiedostossa tulee antaa suoritusoikeus, joten sain saltin dokumentaatiosta selville, että se tulee antaa `mode:` osiossa(WMware 2024). Muokkasin init.sls tiedostoa niin, että lisäsin osion `- mode: 755` joka antaa luku ja suoritusoikeuden kaikille.  
+  ![e12.png](e12.png)
+12. Ajoin saltin tilan testi2 koneelle ja annoin testi2 koneella komennon `omaOhjelma`  
+  ![e13.png](e13.png)
+13. Toimivuuden varmistamisen jälkeen ajoin vielä uudelleen Salt-tilan ja mitään muutoksia ei tehty, joten osio on valmis.
+
+
+###### Osion lähteet: (WMware 2024, NicklasHH 2024b, Karvinen 2024)
 
 ---
 
@@ -150,4 +186,8 @@ Karvinen, T. 2024. Infra as Code - Palvelinten hallinta 2024. Luettavissa: https
 
 Valkamo, T. 2022. Using Salt with Windows. Luettavissa: https://tuomasvalkamo.com/CMS-course/week-5/. Luettu: 27.4.2024.
 
-NicklasHH. 2024. h1 Viisikko. Luettavissa: https://github.com/NicklasHH/Palvelinten-hallinta/blob/master/h1%20Viisikko/h1%20Viisikko.md. Luettu: 27.4.2024.
+NicklasHH 2024a. h1 Viisikko. Luettavissa: https://github.com/NicklasHH/Palvelinten-hallinta/blob/master/h1%20Viisikko/h1%20Viisikko.md. Luettu: 27.4.2024.
+
+NicklasHH 2024b. Viikon palautus 7. Luettavissa: https://github.com/NicklasHH/Linux-palvelimet/blob/master/h7%20Maalisuora/Palautus7.md. Luettu: 27.4.2024.
+
+WMware 2024. SALT.STATES.FILE. Luettavissa: https://docs.saltproject.io/en/latest/ref/states/all/salt.states.file.html. Luettu: 27.4.2024.
