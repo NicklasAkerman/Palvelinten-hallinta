@@ -177,9 +177,39 @@ Tehtävänä oli muokata asetuksia jostain graafisen käyttöliittymän ohjelmas
 
 Tehtävänä oli tehdä Salt-tila, joka asentaa järjestelmään kansiollisen komentoja. Tila tuli tehdä recurse(tms) parametriä hyödyntäen niin, että en joudu luettelemaan jokaista asennettavaa komentoa ja skipritä erikseen sls-tiedostossa.
 
-1. abc
+1. Aloitin osion kirjautumalla testi1 virtuaalikoneelle ja tein uuden kansion `ampari`  
+  ![g1.png](g1.png)  
 
-###### Osion lähteet: ()
+2. Tein polkuun `/home/vagrant/testikansio` tiedoston `testi` jolle annoin vapaammat suoritusoikeudet komennolla `chmod ugo+x testi` ja testasin ohjelman komennolla `./testi` Tämän avulla saan testattua tässä helposti tekemäni komennot jonka jälkeen voin kopioida ne omiin osioihinsa. Tein myös valmiiksi tässä kohtaa ampari kansion polkuun `/home/vagrant/ampari`.  
+  ![g2.png](g2.png)
+
+3. **Komento 1**  
+  ![g3.png](g3.png)
+
+4. **Komento 2**  
+  ![g4.png](g4.png)
+
+5. **Komento 3**  
+  ![g5.png](g5.png)
+
+6. Annoin komentojen teon jälkeen koko kansiolle suoritusoikeuden komennolla `sudo chmod +x ampari/*` ja kopioin ampari kansion polkuun `/usr/local/bin/` komennolla `sudo cp -r ampari /usr/local/bin/`. Tämän jälkeen ei komennot kuitenkaan toiminut, joten siirsin pelkät tiedostot komennolla `sudo cp ampari/* /usr/local/bin/` jonka jälkeen komennot toimivat.  
+  ![g6.png](g6.png)
+
+7. Kopioin alkuperäisen ampari tiedoston komennolla `sudo cp -r ampari /srv/salt/ampari/` ja tarkistin, että koko tiedosto ampari siirtyi. 
+  ![g7.png](g7.png)
+
+8. Tein init.sls tiedoston komennolla `micro init.sls` ampari kansioon saltin oman dokumentaation avulla jossa käsiteltiin recursea(WMware 2024).
+  ![g8.png](g8.png)
+9. Sain salt-tilaa ajettaessa virheen `Comment: 'mode' is not allowed in 'file.recurse'. Please use 'file_mode' and 'dir_mode'.` joten vaihdoin mode osion file_mode  
+  ![g9.png](g9.png)
+
+10. Korjauksien jälkeen tilan ajaminen onnistui joten ajoin sen testi2 koneelle komennolla `sudo salt 'testi2' state.apply ampari` joka näytti menevän läpi  
+  ![g10.png](g10.png)
+
+11. Tila ajettu onnistuneesti ja testaus näytti kaiken toimivan kuten pitää.  
+  ![g11.png](g11.png)
+
+###### Osion lähteet: (Karvinen 2024, WMware 2024)
 
 ---
 
