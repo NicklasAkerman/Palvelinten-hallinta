@@ -135,13 +135,13 @@ Tehtävänä oli tehdä Salt-tila, joka asentaa järjestelmään uuden komennon.
   ![e5.png](e5.png)
 2. Ollessani salt kansiossa, annoin komennon `sudo cp /usr/local/bin/omaOhjelma ohjelma` joka kopioi tekemäni ohjelman saltin ohjelma kansioon.  
   ![e6.png](e6.png)
-3. Tein init.sls tiedoston komennolla `micro init.sls` ja testasin seuraavaa: Asetin polun minne tiedosto lisätään, file.managed kertoo mitä tehdään ja source kertoo mistä lisättävä tiedosto löytyy.
+3. Tein init.sls tiedoston komennolla `micro init.sls` ja testasin seuraavaa: Asetin polun minne tiedosto lisätään, file.managed kertoo mitä tehdään ja source kertoo mistä lisättävä tiedosto löytyy.  
   ![e7.png](e7.png)
 4. Käynnistin toisen virtuaalikoneen komennolla `vagrant up testi2` ja yhdistin siihen komennolla `vagrant ssh testi2`
 5. Annoin testi2 koneella komennon `omaOhjelma` ja palautuksena tuli `-bash: omaOhjelma: command not found` eli komentoa ei vielä ole
 6. Ajoin testi1 koneella tilan testi2 koneelle komennolla `sudo salt 'testi2' state.apply ohjelma` mutta tilan ajaminen ei onnistunut  
   ![e8.png](e8.png)
-7. Lisäsin 2 välilyöntiä riville 3 mutta samat virheet jatkuivat edelleen.
+7. Lisäsin 2 välilyöntiä riville 3 mutta samat virheet jatkuivat edelleen.  
   ![e9.png](e9.png)
 8. Huomasin polun olevan virheellinen source osiossa, joten korjasin myös sen  
   ![e10.png](e10.png)
