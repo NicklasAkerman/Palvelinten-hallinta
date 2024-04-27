@@ -198,7 +198,7 @@ Tehtävänä oli tehdä Salt-tila, joka asentaa järjestelmään kansiollisen ko
 7. Kopioin alkuperäisen ampari tiedoston komennolla `sudo cp -r ampari /srv/salt/ampari/` ja tarkistin, että koko tiedosto ampari siirtyi. 
   ![g7.png](g7.png)
 
-8. Tein init.sls tiedoston komennolla `micro init.sls` ampari kansioon saltin oman dokumentaation avulla jossa käsiteltiin recursea(WMware 2024).
+8. Tein init.sls tiedoston komennolla `micro init.sls` ampari kansioon saltin oman dokumentaation avulla jossa käsiteltiin recursea(WMware 2024).  
   ![g8.png](g8.png)
 9. Sain salt-tilaa ajettaessa virheen `Comment: 'mode' is not allowed in 'file.recurse'. Please use 'file_mode' and 'dir_mode'.` joten vaihdoin mode osion file_mode  
   ![g9.png](g9.png)
