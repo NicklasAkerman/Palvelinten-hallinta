@@ -164,7 +164,7 @@ Tehtävänä oli tehdä Salt-tila, joka asentaa järjestelmään uuden komennon.
 
 Tehtävänä oli muokata asetuksia jostain graafisen käyttöliittymän ohjelmasta käyttäen ohjelman omia valikoita/dialogeja sekä etsiä tämä asetus tiedostojärjestelmästä. Asensin tehtävää varten tyhjän Debian 12 virtuaalikoneen ja siihen micro editorin.
 
-1. Asensin komennolla `sudo apt-get install vlc`
+1. Asensin komennolla `sudo apt-get install vlc` VLC media playerin
 2. Muuttelin erinäisiä asetuksia `Preferences` napin takaa
 3. Annoin komennon `sudo find -printf '%T+ %p\n' | sort -n | grep vlc` joka näytti, että muutokset tallennetaan `./.config/vlc/vlc-qt-interface.conf`
 4. Tarkistin vielä sisällön menemällä kyseiseen polkuun ja tarkastelin sisältöä microlla    
