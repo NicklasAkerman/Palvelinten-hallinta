@@ -162,11 +162,14 @@ Tehtävänä oli tehdä Salt-tila, joka asentaa järjestelmään uuden komennon.
 
 ## f) Vapaaehtoinen: Gui2fs.
 
-Tehtävänä oli muokata asetuksia jostain graafisen käyttöliittymän ohjelmasta käyttäen ohjelman omia valikoita/dialogeja sekä etsiä tämä asetus tiedostojärjestelmästä.
+Tehtävänä oli muokata asetuksia jostain graafisen käyttöliittymän ohjelmasta käyttäen ohjelman omia valikoita/dialogeja sekä etsiä tämä asetus tiedostojärjestelmästä. Asensin tehtävää varten tyhjän Debian 12 virtuaalikoneen ja siihen micro editorin.
 
-1. abc
-
-###### Osion lähteet: ()
+1. Asensin komennolla `sudo apt-get install vlc`
+2. Muuttelin erinäisiä asetuksia `Preferences` napin takaa
+3. Annoin komennon `sudo find -printf '%T+ %p\n' | sort -n | grep vlc` joka näytti, että muutokset tallennetaan `./.config/vlc/vlc-qt-interface.conf`
+4. Tarkistin vielä sisällön menemällä kyseiseen polkuun ja tarkastelin sisältöä microlla    
+  ![f1.png](f1.png)   
+  ![f2.png](f2.png)  
 
 ---
 
@@ -184,10 +187,10 @@ Tehtävänä oli tehdä Salt-tila, joka asentaa järjestelmään kansiollisen ko
 
 Karvinen, T. 2024. Infra as Code - Palvelinten hallinta 2024. Luettavissa: https://terokarvinen.com/2024/configuration-management-2024-spring/. Luettu: 27.4.2024.
 
-Valkamo, T. 2022. Using Salt with Windows. Luettavissa: https://tuomasvalkamo.com/CMS-course/week-5/. Luettu: 27.4.2024.
-
 NicklasHH 2024a. h1 Viisikko. Luettavissa: https://github.com/NicklasHH/Palvelinten-hallinta/blob/master/h1%20Viisikko/h1%20Viisikko.md. Luettu: 27.4.2024.
 
 NicklasHH 2024b. Viikon palautus 7. Luettavissa: https://github.com/NicklasHH/Linux-palvelimet/blob/master/h7%20Maalisuora/Palautus7.md. Luettu: 27.4.2024.
+
+Valkamo, T. 2022. Using Salt with Windows. Luettavissa: https://tuomasvalkamo.com/CMS-course/week-5/. Luettu: 27.4.2024.
 
 WMware 2024. SALT.STATES.FILE. Luettavissa: https://docs.saltproject.io/en/latest/ref/states/all/salt.states.file.html. Luettu: 27.4.2024.
