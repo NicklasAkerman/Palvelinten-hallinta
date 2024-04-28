@@ -51,7 +51,7 @@ Tehtävänä oli lukea ja tiivistää muutamaan riviin vapaavalintainen aiemman 
 
 ## a) Asenna Salt Windowsille
 
-Tehtävänä oli asentaa Salt Windowsille ja todentaa sen toiminto. Koska olin asentanut sen jo, tuli vain todentaa toiminta.
+Tehtävänä oli asentaa Salt Windowsille ja todentaa sen toiminto. Koska olin asentanut sen jo, tuli vain todentaa toiminta (Karvinen 2024).
 
 1. Avasin PowerShellin Admin tilassa ja kirjoitin komennon `salt-call --local` jonka jälkeen tarkistelin saatavilla olevia komentoja.
 2. Ajoin komennon joka kertoo Saltin versionumeron  
@@ -61,7 +61,7 @@ Tehtävänä oli asentaa Salt Windowsille ja todentaa sen toiminto. Koska olin a
 
 ## b) Kerää Windows -koneesta tietoa grains.items -toiminnolla.
 
-Tehtävänä oli kerätä Windows -koneesta tietoja käyttäen grains.items toimintoa, poimia sieltä keskeisiä tietoja sekä analysoida niitä.
+Tehtävänä oli kerätä Windows -koneesta tietoja käyttäen grains.items toimintoa, poimia sieltä keskeisiä tietoja sekä analysoida niitä (Karvinen 2024).
 
 1. Annoin PowerShellillä komennon `salt-call --local grains.items` joka toi antoi kaikki saatavilla olevat tiedot.
 2. Valitsin listalta näytettäväksi tiedot komennolla `salt-call --local grains.item saltversion id osfinger`.  
@@ -74,7 +74,7 @@ Tehtävänä oli kerätä Windows -koneesta tietoja käyttäen grains.items toim
 
 ## c) Kokeile Saltin file -toimintoa Windowsilla.
 
-Tehtävänä oli kokeilla Saltin file-toimintoa windowsissa. Käytin tehtävässä apuna ensimmäisen viikon raporttiani.
+Tehtävänä oli kokeilla Saltin file-toimintoa windowsissa. Käytin tehtävässä apuna ensimmäisen viikon raporttiani (Karvinen 2024).
 
 1. Tein tmp kansion ja polkuna oli `C:\Users\nickl\tmp`
 
@@ -95,7 +95,7 @@ Tehtävänä oli kokeilla Saltin file-toimintoa windowsissa. Käytin tehtäväss
 
 ## d) CSI Kerava.
 
-Tehtävänä oli näyttää `find` komennon avulla viimeisimmäksi muokatut tiedostot `/etc/` -hakemistosta kotihakemistosta. Kaikki käytetyt parametrit ja format string tulee selittää `man find` lähteenä käyttäen.
+Tehtävänä oli näyttää `find` komennon avulla viimeisimmäksi muokatut tiedostot `/etc/` -hakemistosta kotihakemistosta. Kaikki käytetyt parametrit ja format string tulee selittää `man find` lähteenä käyttäen (Karvinen 2024).
 Alkutoimena siirryin kansioon `C:\Users\nickl\vagrantduo` koska tiesin siellä olevan jonkun vanhan virtuaalikoneen. Annoin komennon `cat vagrantfile` ja tarkistin minkä nimisiä koneita asetustiedostossa tehtiin ja annoin komennon `vagrant up testi1` käynnistääkseni vain yhden virtuaalikoneen. Lopuksi yhdistin virtuaalikoneeseen komennolla `vagrant ssh testi1`
 
 1. Käytin komentoa `man find` ja tutkin mitä kaikkea voidaan käyttää find toiminnossa. Tein lisäksi uuden kansion kotihakemistoon, jotta pystyin todentamaan find komennon toimivuuden. Pohjana oli Tero Karvisen tunnilla käyttämä komento, jonka löysin tuntimuistiinpanoistani `find -printf '%T+ %p\n' | sort` ja lähdin tämän pohjalta rakentamaan komentoa. Manuaalista kiinnostuneille on siitä olemassa myös [online versio](https://man7.org/linux/man-pages/man1/find.1.html).
