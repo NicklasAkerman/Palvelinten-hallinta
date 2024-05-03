@@ -73,9 +73,18 @@ Tehtävänä oli lukea ja tiivistää muutaman ranskalaisen viivan avulla annetu
 ## a) Paketti Windowsia
 
 Tehtävänä oli asentaa Windowsiin ohjelmia Saltin pkg.installed -funktiolla ja raportoida työvaiheet.
-1. 
+1. Avasin Powershellin adminina. Menin polkuun `C:\salt` ja annoin komennon `salt-call --local winrepo.update_git_repos` jonka jälkeen annoin komennon `salt-call --local pkg.refresh_db`  
+  ![a1.png](a1.png)  
+2. Siirryin katsomaan asennettavaa sisältöä [salt-winrepo-ng](https://github.com/saltstack/salt-winrepo-ng)  
+3. Päädyin kokeilemaan winrarin asennusta. Olen joskus aikaisemmin käyttänyt sovellusta, joten valitsin sen vain nimen perusteella. Annoin siis komennon `salt-call --local pkg.install winrar`  
+4. Komennon suorituksen yhteydessä tuli varoitus, mutta install statuksena oli kuitenkin succes. Winrar löytyi windowsin hakutoiminnolla ja käynnistyi joten asennus on suoritettu.  
+  ![a2.png](a2.png)  
+5. Kokeilin lopuksi vielä poistamista komennolla `salt-call --local pkg.remove winrar` jonka jälkeen winraria ei enään löytynyt windowsin hakutoiminnolla  
+  ![a3.png](a3.png)
 
-###### Osion lähteet: ()
+**Huomiona** se, että tehtävänannossa puhuttiin pkg.installed funktiosta. Asennukset tein `pkg.install` funktiolla ja WMwaren artikkelista saamani ymmärryksen mukaan `pkg.installed` toimii minioniin ja `pkg.install` toimii paikalliseen asennukseen  
+
+###### Osion lähteet: (WMWare 2024)
 
 ---
 
