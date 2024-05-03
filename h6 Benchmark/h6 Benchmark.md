@@ -72,7 +72,8 @@ Tehtävänä oli lukea ja tiivistää muutaman ranskalaisen viivan avulla annetu
 
 ## a) Paketti Windowsia
 
-Tehtävänä oli asentaa Windowsiin ohjelmia Saltin pkg.installed -funktiolla ja raportoida työvaiheet.
+Tehtävänä oli asentaa Windowsiin ohjelmia Saltin pkg.installed -funktiolla ja raportoida työvaiheet. Asennuksen ohjeena käytin aiemmin lukemaani artikkelia (WMware 2024).
+
 1. Avasin Powershellin adminina. Menin polkuun `C:\salt` ja annoin komennon `salt-call --local winrepo.update_git_repos` jonka jälkeen annoin komennon `salt-call --local pkg.refresh_db`  
   ![a1.png](a1.png)  
 2. Siirryin katsomaan asennettavaa sisältöä [salt-winrepo-ng](https://github.com/saltstack/salt-winrepo-ng)  
