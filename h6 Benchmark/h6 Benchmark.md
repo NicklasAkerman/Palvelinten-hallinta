@@ -109,12 +109,63 @@ Tehtävänä oli etsiä 3-7 keskitetyn hallinnan projektia aikaisempien Palvelin
   - hyödyllinen lopputulos
 - Avoimet kysymykset ja huomiot
 
-1. abc (lähdeviite)
-2. abc (lähdeviite)
-3. abc (lähdeviite)
-4. abc (lähdeviite)
+##### h7 - Miniproject (ojarv 2023)
+   - Tarkoitus: Projektin tarkoituksena oli asentaa ja mukauttaa Windows 11 käyttäjärjestelmää Saltia hyödyntäen
+   - Lisenssi: Lisenssinä oli `GNU GPL-3` ja se löytyi repositorion juuressa olevasta tiedostosta sekä listattuna repositorion About osiossa
+   - Tekijä ja vuosi: Tekijänä oli Githubin käyttäjänimi `ojarv` ja vuosilukuna 2023 joka kävi ilmi githubin versionhallintaa selaamalla.
+   - Riippuvuudet: Projekti toteutettiin Windows 11 käyttöjärjestelmiä varten ja tehtävässä luotiin Windows virtuaalitietokoneita. Käytössä oli myös tässä raportissa tutuksi tullut githubin [salt-winrepo-ng](https://github.com/saltstack/salt-winrepo-ng)
+   - Kiinnostavat asiat: Erityisen kiinnostavaa oli se, miten tässä oli määritelty windowsin omia asetuksia saltin avulla. Myös muuttujien käyttäminen jinja.sls tiedostossa vaatii perehtymistä, mutta tästä saa hyvin vinkkiä sen toteuttamiseen.
+   - Avoimet kysymykset: Tehtävä oli hyvin raportoitu ja mielenkiintoinen omasta näkökulmasta, koska tämä raportti auttaa minua luomaan oman kansion, jonne tulen laittamaan määrittelemiäni windows asetuksia talteen.
 
-###### Osion lähteet: ()
+##### Miniproject (FredrikAkerlund 2023)
+   - Tarkoitus: Projektin tarkoituksena oli luoda kehittäjille oma työympäristö joka sisältää tarpeelliset ohjelmistot. Linux koneet sisältävät eri ohjelmiston kuin Windows koneet.
+   - Lisenssi: Lisenssinä oli `GNU GPL-3` ja se löytyi repositorion juuressa olevasta tiedostosta sekä listattuna repositorion About osiossa
+   - Tekijä ja vuosi: Tekijänä oli Githubin käyttäjänimi `FredrikAkerlund` ja vuosilukuna 2023 joka kävi ilmi githubin versionhallintaa selaamalla.
+   - Riippuvuudet: 
+     - Käytössä oli vagrantfile joka loi debian bullseye64 virtuaalikoneita
+     - Windows kone on mainittu, luultavasti se on paikallinen tietokone mutta erikseen ei ole eritelty siitä tietoja(myöhemmin selviää, että käytössä onkin windows 10)
+     - Windows paketinhallinta `sudo salt-run winrepo.update_git_repos`
+     - Chocolatey helpottamaan ohjelmien asennusta
+   - Kiinnostavat asiat: Projekti oli kiinnostava, koska voisin itse myös harkita käyttäväni ohjelmistokehityksessä jokaiselle projektille omaa virtuaalikonetta. 
+   - Avoimet kysymykset: Raportissa olisi voitu esitellä paikallinen tietokone niin raudan kuin ohjelmistonsa puolesta.
+
+##### Palvelinohjelmoinnin-miniprojekti Ohjelmisto ympäristö kuntoon ubuntu 20.04 koneille. (DivXe 2023)
+   - Tarkoitus: Projektin tarkoituksena oli mahdollistaa helposti kehitysympäristön luonti sisältäen tarvittavat ohjelmat.
+   - Lisenssi: Lisenssinä oli `GNU GPL-3` ja se löytyi repositorion juuressa olevasta tiedostosta sekä listattuna repositorion About osiossa
+   - Tekijä ja vuosi: Tekijänä oli Githubin käyttäjänimi `DivXe` ja vuosilukuna 2023 joka kävi ilmi githubin versionhallintaa selaamalla.
+   - Riippuvuudet: 
+     - Ubuntu 20.04
+     - Vagrantilla luotu virtuaaliympäristö
+   - Kiinnostavat asiat: Kiinnostavaa oli nähdä se, miten tämä projekti oli tavoitteiltaan samankaltainen kuin edellisen raportin(FredrikAkerlund 2023), mutta lopputulos oli toteutettu hieman toisella tapaa.
+   - Avoimet kysymykset: Raportointi oli tehty niin kattavasti ja hyvin, ettei kysymyksiä jäänyt. Jos toteuttaisin raportin perusteella tämän itse, voisi siinä kohtaa kysymyksiä tulla
+
+##### VagrantGoat-miniprojekti (aatuhorelli 2023)
+   - Tarkoitus: Projektin tarkoituksena oli luoda valmiiksi konfiguroitu WebGoat tarvittavien ohjelmistojen kanssa. WebGoat on haavoittuvuuksien testaamiseen ja harjoitteluun tarkoitettu ohjelma.
+   - Lisenssi: Lisenssinä oli `GNU GPL-3` ja se löytyi repositorion juuressa olevasta tiedostosta sekä listattuna repositorion About osiossa
+   - Tekijä ja vuosi: Tekijänä oli Githubin käyttäjänimi `aatuhorelli` ja vuosilukuna 2023 joka kävi ilmi githubin versionhallintaa selaamalla.
+   - Riippuvuudet:
+     - Vagrantilla luodaan virtuaaliympäristö
+     - Paikallinen käyttöjärjestelmä: Kali GNU/Linux-2023
+     - Virtuaalikoneiden käyttöjärjestelmä: debian bullseye64
+   - Kiinnostavat asiat: 
+     - En ole tutustunut haavoittuvuuksien testaukseen, joten aiheena asia oli kiinnostava, vaikka en varsinaisesti tiedä mitä tällaisen ympäristön tulisi pitää sisällään.
+     - Projekti oli hyvin raportoitu ohjelmiston versionumerointia myöten
+   - Avoimet kysymykset: Isoimpana kysymyksenä heräsi mielenkiinto haavoittuvuuksien testausta kohtaan. 
+
+##### Salt-moduuli (RenneJ 2023)
+   - Tarkoitus: Projektin tarkoituksena oli luoda moduuli, jonka avulla voidaan asentaa määrätylle minionille postgresql-tietokanta valmiiksi konfiguroituna siten, että siihen voidaan ottaa yhteys lähiverkon sisällä.
+   - Lisenssi: Lisenssinä oli `GNU GPL-3` ja se löytyi repositorion juuressa olevasta tiedostosta sekä listattuna repositorion About osiossa
+   - Tekijä ja vuosi: Tekijänä oli Githubin käyttäjänimi `RenneJ` ja vuosilukuna 2023 joka kävi ilmi githubin versionhallintaa selaamalla.
+   - Riippuvuudet:
+     - Paikallinen käyttöjärjestelmä: Ubuntu 22.04LTS
+     - Virtualisointi: libvirt
+     - Virtuaalikoneiden käyttöjärjestelmä: debian bullseye64
+   - Kiinnostavat asiat:
+     - Käyn tällä hetkellä tietokannan suunnittelu ja toteutus kurssia, jonka takia heräsi mielenkiinto myös tähän raporttiin ja kuinka yksinkertaisesti tämä osio saadaan suoritettua.
+     - Hyvin kirjoitettu raportti lisää kiinnostavuutta
+   - Avoimet kysymykset: postgresql ei ole itselle kovinkaan tuttu, joten sen konfigurointiin liittyvät osiot jäivät vähän avoimiksi.
+
+**Huomiona:** Yhdessäkään raportissa ei mainittu päivämääriä. Osassa näkyi kuvankaappauksena päivämäärä, mutta niiden oikeellisuudesta ei voi varmistua. Tämä toimii hyvänä muistutuksena omaan raporttiin, että jossakin yhteydessä olisi hyvä mainita päivämäärä. Jokaisella oli käytössä `GNU GPL-3` lisenssi jota Tero Karvinen on suositellut omilla kursseillaan. Kaikki raportit olivat nimimerkin takana ja osasta nimimerkeistä olisi voinut päätellä nimen, mutta pitäydyin kaikkien kohdalla vain kertomaan nimimerkin.
 
 ---
 
@@ -143,3 +194,14 @@ Tehtävänä oli listata viisi omaa ideaa modulille kurssin lopputehtävää var
 Karvinen, T. 2024. Infra as Code - Palvelinten hallinta 2024. Luettavissa: https://terokarvinen.com/2024/configuration-management-2024-spring/. Luettu: 3.5.2024.
 
 VMware 2024. WINDOWS PACKAGE MANAGER. Luettavissa: https://docs.saltproject.io/en/latest/topics/windows/windows-package-manager.html. Luettu: 3.5.2024.
+
+
+ojarv 2023. h7 - Miniproject. Luettavissa: https://github.com/ojarv/Infra-as-Code/blob/main/h7%20-%20Miniproject.md. Luettu: 3.5.2024.
+
+FredrikAkerlund 2023. Miniproject. Luettavissa: https://github.com/FredrikAkerlund/Miniproject/blob/main/README.md. Luettu: 3.5.2024.
+
+DivXe 2023. Palvelinohjelmoinnin-miniprojekti Ohjelmisto ympäristö kuntoon ubuntu 20.04 koneille. Luettavissa: https://github.com/DiviXe/Palvelinohjelmoinnin-miniprojekti/blob/main/README.md. Luettu: 3.5.2024.
+
+aatuhorelli 2023. VagrantGoat-miniprojekti. Luettavissa: https://github.com/aatuhorelli/vagrantgoat/blob/main/README.md. Luettu: 3.5.2024.
+
+RenneJ 2023. Salt-moduuli. Luettavissa: https://github.com/RenneJ/hh-palvelinten-hallinta/blob/main/h7-miniprojekti.md#salt-moduuli. Luettu: 3.5.2024.
