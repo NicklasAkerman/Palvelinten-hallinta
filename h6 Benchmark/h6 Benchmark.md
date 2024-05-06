@@ -177,13 +177,13 @@ Valitsin tehtään DiviXen tekemän miniprojektin, jossa siis asennettiin ohjelm
 
 Tarkistelin koodia ja huomasin, että Vagrantfile sisältää paketinhallinnan ulkopuolelta ladattavan Ubuntun 20.4 version. Lataus suoritetaan saltproject sivustolta, joten uskoakseni se on luotettava sivusto. En kuitenkaan ole varma, kuka voisi halutessaan päivittää ladattua tiedostoa. Hyvä vaihtoehto olisi lisätä ladattava tiedosto omaan repositoryyn, ja asennukset hoitaa sitä kautta. Kävin repositoryn muut tiedostot läpi ja en huomannut, että muuta olisi ladattu paketinhallinnan ulkopuolelta.
 
-1. Aloitin käynnistämällä Powershellin adminina ja tekemällä C juureen kansion nimeltä `Divixe` johon lisäsin Divixen github repositorystä vagrantfilen. Tämän jälkeen annoin komennon vagrant up, joka tekee vagrantfilen perusteella kolme virtuaalista tietokonetta. Kaikkinensa asennus kesti noin 8 minuuttia ja en kohdannut mitään ongelmia.
+1. Aloitin käynnistämällä Powershellin adminina ja tekemällä C juureen kansion nimeltä `Divixe` johon lisäsin Divixen github repositorystä vagrantfilen. Tämän jälkeen annoin komennon vagrant up, joka tekee vagrantfilen perusteella kolme virtuaalista tietokonetta. Kaikkinensa asennus kesti noin 8 minuuttia ja en kohdannut mitään ongelmia.  
   ![c1.png](c1.png)
 
-2. Tarkistin vielä, että virtuaalikoneet todella löytyivät Virtualboxista, jonka jälkeen yhdistin masteriin powershell komennolla `vagrant ssh programmerhost`. Yhdistämistä yrittäessä projektin dokumentaatiosta poiketen minulta kysyttiin salasanaa ja kokeilin vakiosalasanaa `vagrant` jonka löysin (HashiCorp S.A.) jolla kirjautuminen onnistui.
+2. Tarkistin vielä, että virtuaalikoneet todella löytyivät Virtualboxista, jonka jälkeen yhdistin masteriin powershell komennolla `vagrant ssh programmerhost`. Yhdistämistä yrittäessä projektin dokumentaatiosta poiketen minulta kysyttiin salasanaa ja kokeilin vakiosalasanaa `vagrant` jonka löysin (HashiCorp S.A.) jolla kirjautuminen onnistui.  
   ![c2.png](c2.png)
 
-3. Seuraavaksi hyväksyin minion koneiden avaimet raportin ohjeiden mukaan ja kokeilin yhteyttä komennolla `sudo salt '*' test.ping` joka palautti molempien koneiden kohdalla `True`
+3. Seuraavaksi hyväksyin minion koneiden avaimet raportin ohjeiden mukaan ja kokeilin yhteyttä komennolla `sudo salt '*' test.ping` joka palautti molempien koneiden kohdalla `True`  
   ![c3.png](c3.png)
 
 4. Tässä kohtaa huomasin, että minun on tehtävä käsin kansioita ja tiedostoja, koska niitä ei ole jaettu githubin repositorioon.
@@ -193,7 +193,7 @@ Tarkistelin koodia ja huomasin, että Vagrantfile sisältää paketinhallinnan u
    3. Tarkistin, että tiedosto oli oikeassa paikassa  
     ![c5.png](c5.png)
     4. Lisäsin vielä oikeudet init.sls tiedostolle komennolla `sudo chmod +x init.sls`
-5. Seuraavaksi tein raporttia seuraamalla top.sls tiedoston 
+5. Seuraavaksi tein raporttia seuraamalla top.sls tiedoston  
   ![c6.png](c6.png)
 6. Tein uuden sls tiedoston ja sinne kopioin sisällön DiviXen githubin testversion.sls tiedostosta. Kaikki tämä oli raportoitu suhteellisen hyvin.  
   ![c7.png](c7.png)
@@ -201,7 +201,7 @@ Tarkistelin koodia ja huomasin, että Vagrantfile sisältää paketinhallinnan u
   ![c8.png](c8.png)
 8. Uskin tässä kohtaa saaneeni kaikki asennukset tehtyä, joten annoin komennon tilojen ajamiseen `sudo salt '*' state.apply saltenv=base --state-output=terse`
 
-Kun ajo oli suoritettu, tuli lista virheitä ja päätin keskeyttää osion. Raportin ohjeita seuraamalla ei tätä saanut toimimaan minkä lisäksi omat ratkaisuyritykset eivät tuottaneet tulosta.
+Kun ajo oli suoritettu, tuli lista virheitä ja päätin keskeyttää osion. Raportin ohjeita seuraamalla ei tätä saanut toimimaan minkä lisäksi omat ratkaisuyritykset eivät tuottaneet tulosta.  
   ![c9.png](c9.png)
 
 Katsoin valitsemani benchmark osion raportit läpi siinä mielessä, että mikä olisi helppo toistaa ja yhdelläkään raporteista ei toistaminen onnistu ilman, että joutuu itse selvittelemään asioita, luomaan käsin tiedostoja tai etsimällä oikeita käyttöjärjestelmiä netistä vagrantfilen suoritusta varten.
