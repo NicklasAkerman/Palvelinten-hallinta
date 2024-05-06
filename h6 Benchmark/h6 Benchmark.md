@@ -129,10 +129,10 @@ Tehtävänä oli etsiä 3-7 keskitetyn hallinnan projektia aikaisempien Palvelin
    - Kiinnostavat asiat: Projekti oli kiinnostava, koska voisin itse myös harkita käyttäväni ohjelmistokehityksessä jokaiselle projektille omaa virtuaalikonetta. 
    - Avoimet kysymykset: Raportissa olisi voitu esitellä paikallinen tietokone niin raudan kuin ohjelmistonsa puolesta.
 
-##### Palvelinohjelmoinnin-miniprojekti Ohjelmisto ympäristö kuntoon ubuntu 20.04 koneille. (DivXe 2023)
+##### Palvelinohjelmoinnin-miniprojekti Ohjelmisto ympäristö kuntoon ubuntu 20.04 koneille. (DiviXe 2023)
    - Tarkoitus: Projektin tarkoituksena oli mahdollistaa helposti kehitysympäristön luonti sisältäen tarvittavat ohjelmat.
    - Lisenssi: Lisenssinä oli `GNU GPL-3` ja se löytyi repositorion juuressa olevasta tiedostosta sekä listattuna repositorion About osiossa
-   - Tekijä ja vuosi: Tekijänä oli Githubin käyttäjänimi `DivXe` ja vuosilukuna 2023 joka kävi ilmi githubin versionhallintaa selaamalla.
+   - Tekijä ja vuosi: Tekijänä oli Githubin käyttäjänimi `DiviXe` ja vuosilukuna 2023 joka kävi ilmi githubin versionhallintaa selaamalla.
    - Riippuvuudet: 
      - Ubuntu 20.04
      - Vagrantilla luotu virtuaaliympäristö
@@ -173,35 +173,79 @@ Tehtävänä oli etsiä 3-7 keskitetyn hallinnan projektia aikaisempien Palvelin
 
 Tehtävänä oli valita perustelujen kanssa yksi edellisen osion töistä. Valitusta tehtävästä tuli tarkistaa koodi(Lataako koodi binäärejä, oliko ohjelmistolähteet luotettavia, ladattiinko jotain paketinhallinnan ulkopuolelta), jonka jälkeen koodi tuli ajaa ja testata lopputulos. Tarkoituksena oli kommentoida, arvioida ja ajaa modulia, joten mahdolliset bugit tuli raportoida.
 
-###### Osion lähteet: ()
+Valitsin tehtään DiviXen tekemän miniprojektin, jossa siis asennettiin ohjelmointiympäristöjä. Tämä valikoitui sen takia, että pystyn oikeasti analysoimaan tehdyt asiat, koska osio on suhteellisen tuttu. Lisäksi aihe on kiinnostava, koska Windowsin kanssa koodatessa on usein ongelmia esimerkiksi ympäristömuuttujien kanssa, joten voisi olla hyvä idea koodata aina omaa projektia omalla virtuaalikoneella. Lisäksi artikkeli oli suhteellisen hyvin kirjoitettu, joten vaiheita oli lukemisen perusteella helppo seurata.
+
+Tarkistelin koodia ja huomasin, että Vagrantfile sisältää paketinhallinnan ulkopuolelta ladattavan Ubuntun 20.4 version. Lataus suoritetaan saltproject sivustolta, joten uskoakseni se on luotettava sivusto. En kuitenkaan ole varma, kuka voisi halutessaan päivittää ladattua tiedostoa. Hyvä vaihtoehto olisi lisätä ladattava tiedosto omaan repositoryyn, ja asennukset hoitaa sitä kautta. Kävin repositoryn muut tiedostot läpi ja en huomannut, että muuta olisi ladattu paketinhallinnan ulkopuolelta.
+
+1. Aloitin käynnistämällä Powershellin adminina ja tekemällä C juureen kansion nimeltä `Divixe` johon lisäsin Divixen github repositorystä vagrantfilen. Tämän jälkeen annoin komennon vagrant up, joka tekee vagrantfilen perusteella kolme virtuaalista tietokonetta. Kaikkinensa asennus kesti noin 8 minuuttia ja en kohdannut mitään ongelmia.
+  ![c1.png](c1.png)
+
+2. Tarkistin vielä, että virtuaalikoneet todella löytyivät Virtualboxista, jonka jälkeen yhdistin masteriin powershell komennolla `vagrant ssh programmerhost`. Yhdistämistä yrittäessä projektin dokumentaatiosta poiketen minulta kysyttiin salasanaa ja kokeilin vakiosalasanaa `vagrant` jonka löysin (HashiCorp S.A.) jolla kirjautuminen onnistui.
+  ![c2.png](c2.png)
+
+3. Seuraavaksi hyväksyin minion koneiden avaimet raportin ohjeiden mukaan ja kokeilin yhteyttä komennolla `sudo salt '*' test.ping` joka palautti molempien koneiden kohdalla `True`
+  ![c3.png](c3.png)
+
+4. Tässä kohtaa huomasin, että minun on tehtävä käsin kansioita ja tiedostoja, koska niitä ei ole jaettu githubin repositorioon.
+   1. Tein kansiot ja kopioin githubista init.sls tiedoston sisällön    
+    ![c4.png](c4.png)
+   2. Jouduin vielä asentamaan Eclipsen käsin, koska myöskään init.sls tiedostossa mainittua eclipsen sourcea ei oltu lisätty github repositorioon. Annoin siis raportissa löytyneen komennon `sudo snap install --classic eclipse` ja kopioin eclipse.ini tiedoston saltin programmerenvironment kansioon komennolla `sudo cp /snap/eclipse/66/eclipse.ini /srv/salt/programmerenvironment/` joka ei toiminut. Lähdin selaamaan polkua ja huomasin, että minulla on versio 87 raportin 66 sijaan, joten kopiointi tapahtui komennolla `sudo cp /snap/eclipse/87/eclipse.ini /srv/salt/programmerenvironment/`
+   3. Tarkistin, että tiedosto oli oikeassa paikassa  
+    ![c5.png](c5.png)
+    4. Lisäsin vielä oikeudet init.sls tiedostolle komennolla `sudo chmod +x init.sls`
+5. Seuraavaksi tein raporttia seuraamalla top.sls tiedoston 
+  ![c6.png](c6.png)
+6. Tein uuden sls tiedoston ja sinne kopioin sisällön DiviXen githubin testversion.sls tiedostosta. Kaikki tämä oli raportoitu suhteellisen hyvin.  
+  ![c7.png](c7.png)
+7. Seuraavaksi vuorossa oli javatiedoston kirjoitus. Se oli aika huonosti raportoitu, että minne se kuuluu tehdä  
+  ![c8.png](c8.png)
+8. Uskin tässä kohtaa saaneeni kaikki asennukset tehtyä, joten annoin komennon tilojen ajamiseen `sudo salt '*' state.apply saltenv=base --state-output=terse`
+
+Kun ajo oli suoritettu, tuli lista virheitä ja päätin keskeyttää osion. Raportin ohjeita seuraamalla ei tätä saanut toimimaan minkä lisäksi omat ratkaisuyritykset eivät tuottaneet tulosta.
+  ![c9.png](c9.png)
+
+Katsoin valitsemani benchmark osion raportit läpi siinä mielessä, että mikä olisi helppo toistaa ja yhdelläkään raporteista ei toistaminen onnistu ilman, että joutuu itse selvittelemään asioita, luomaan käsin tiedostoja tai etsimällä oikeita käyttöjärjestelmiä netistä vagrantfilen suoritusta varten.
+
+Tästä oli selkeä oppi se, että keskityn omassa harjoitusprojektissani siihen, että raportti on helposti toistettavissa kenen tahansa toimesta.
+
+###### Osion lähteet: (HashiCorp S.A, DiviXe 2023) 
 
 ---
+
 
 ## d) Viisi ideaa
 
 Tehtävänä oli listata viisi omaa ideaa modulille kurssin lopputehtävää varten. Moduleilla tuli olla jokin tarkoitus ja jokaista tuli kuvata vähintään yhdellä virkkeellä.
 
-1.
-2.
-3.
-4.
-5.
+1. Benchmark osion projekteista oppineena, oman moduulin raportointi ja materiaali tulee olla tehty niin, että sen voi asentaa ensikertalainen ilman tarvetta tehdä käsin mitään asetuksia.
+2. Masterin salt kansio tulee olla yksittäinen osio, jonka voi kopioida suoraan githubista ja mitään muuta määrityksiä ei tehdä `Vagrantfile` tiedoston sijoittamisen lisäksi
+3. Projektin lopputulos tekee yhden linux pohjaisen virtuaalikoneen, joka asentaa ohjelmistokehitykseen vaadittavat ohjelmistot
+   - Vscode  
+   - Git  
+   - Chrome  
+   - Gimp  
+   - Nginx palvelin niin, että etusivu haetaan käyttäjän kotihakemistosta muuttujia hyödyntäen  
+   - Micro (ja se asetettuna oletukseksi)  
+4. Projekti toteutetaan niin, että paikallinen windows koneeni on master ja sen salt tiedosto pitää sisällään kaiken tarvittavan asennuksen, jolloin voin vain tehdä uuden kansion minne kopioin vagrantfilen ja antaa siellä komennon `vagrant up` jonka jälkeen ajaa masterilla tilat ja kaikki asennukset on tehty.
+5. Asennukset tulee olla suunniteltu niin, että mahdollisimman paljon asioita ladataan paketinhallinnan kautta, jolloin ohjelmat ovat luotettavista lähteistä.
+
 
 ---
 
 ## Lähdeluettelo
 
-Karvinen, T. 2024. Infra as Code - Palvelinten hallinta 2024. Luettavissa: https://terokarvinen.com/2024/configuration-management-2024-spring/. Luettu: 3.5.2024.
+aatuhorelli 2023. VagrantGoat-miniprojekti. Luettavissa: https://github.com/aatuhorelli/vagrantgoat/blob/main/README.md. Luettu: 3.5.2024.
 
-VMware 2024. WINDOWS PACKAGE MANAGER. Luettavissa: https://docs.saltproject.io/en/latest/topics/windows/windows-package-manager.html. Luettu: 3.5.2024.
-
-
-ojarv 2023. h7 - Miniproject. Luettavissa: https://github.com/ojarv/Infra-as-Code/blob/main/h7%20-%20Miniproject.md. Luettu: 3.5.2024.
+DiviXe 2023. Palvelinohjelmoinnin-miniprojekti Ohjelmisto ympäristö kuntoon ubuntu 20.04 koneille. Luettavissa: https://github.com/DiviXe/Palvelinohjelmoinnin-miniprojekti/blob/main/README.md. Luettu: 6.5.2024.
 
 FredrikAkerlund 2023. Miniproject. Luettavissa: https://github.com/FredrikAkerlund/Miniproject/blob/main/README.md. Luettu: 3.5.2024.
 
-DivXe 2023. Palvelinohjelmoinnin-miniprojekti Ohjelmisto ympäristö kuntoon ubuntu 20.04 koneille. Luettavissa: https://github.com/DiviXe/Palvelinohjelmoinnin-miniprojekti/blob/main/README.md. Luettu: 3.5.2024.
+HashiCorp S.A. Creating a Base Box. Luettavissa: https://developer.hashicorp.com/vagrant/docs/boxes/base. Luettu: 6.5.2024.
 
-aatuhorelli 2023. VagrantGoat-miniprojekti. Luettavissa: https://github.com/aatuhorelli/vagrantgoat/blob/main/README.md. Luettu: 3.5.2024.
+Karvinen, T. 2024. Infra as Code - Palvelinten hallinta 2024. Luettavissa: https://terokarvinen.com/2024/configuration-management-2024-spring/. Luettu: 3.5.2024.
+
+ojarv 2023. h7 - Miniproject. Luettavissa: https://github.com/ojarv/Infra-as-Code/blob/main/h7%20-%20Miniproject.md. Luettu: 3.5.2024.
 
 RenneJ 2023. Salt-moduuli. Luettavissa: https://github.com/RenneJ/hh-palvelinten-hallinta/blob/main/h7-miniprojekti.md#salt-moduuli. Luettu: 3.5.2024.
+
+VMware 2024. WINDOWS PACKAGE MANAGER. Luettavissa: https://docs.saltproject.io/en/latest/topics/windows/windows-package-manager.html. Luettu: 3.5.2024.
