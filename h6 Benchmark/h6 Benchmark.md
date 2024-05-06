@@ -111,7 +111,7 @@ Tehtävänä oli etsiä 3-7 keskitetyn hallinnan projektia aikaisempien Palvelin
 
 ##### h7 - Miniproject (ojarv 2023)
    - Tarkoitus: Projektin tarkoituksena oli asentaa ja mukauttaa Windows 11 käyttäjärjestelmää Saltia hyödyntäen
-   - Lisenssi: Lisenssinä oli `GNU GPL-3` ja se löytyi repositorion juuressa olevasta tiedostosta sekä listattuna repositorion About osiossa
+   - Lisenssi: Lisenssinä oli `GNU GPL-3` ja se löytyi repositorion juuressa olevasta tiedostosta sekä listattuna repositorion About osiossa. GNU GPL3 on avoimen lähdekoodin lisenssi, joka antaa käyttäjille vapauden käyttää, muokata ja jakaa ohjelmistoa(GNU 2023).
    - Tekijä ja vuosi: Tekijänä oli Githubin käyttäjänimi `ojarv` ja vuosilukuna 2023 joka kävi ilmi githubin versionhallintaa selaamalla.
    - Riippuvuudet: Projekti toteutettiin Windows 11 käyttöjärjestelmiä varten ja tehtävässä luotiin Windows virtuaalitietokoneita. Käytössä oli myös tässä raportissa tutuksi tullut githubin [salt-winrepo-ng](https://github.com/saltstack/salt-winrepo-ng)
    - Kiinnostavat asiat: Erityisen kiinnostavaa oli se, miten tässä oli määritelty windowsin omia asetuksia saltin avulla. Myös muuttujien käyttäminen jinja.sls tiedostossa vaatii perehtymistä, mutta tästä saa hyvin vinkkiä sen toteuttamiseen.
@@ -119,7 +119,7 @@ Tehtävänä oli etsiä 3-7 keskitetyn hallinnan projektia aikaisempien Palvelin
 
 ##### Miniproject (FredrikAkerlund 2023)
    - Tarkoitus: Projektin tarkoituksena oli luoda kehittäjille oma työympäristö joka sisältää tarpeelliset ohjelmistot. Linux koneet sisältävät eri ohjelmiston kuin Windows koneet.
-   - Lisenssi: Lisenssinä oli `GNU GPL-3` ja se löytyi repositorion juuressa olevasta tiedostosta sekä listattuna repositorion About osiossa
+   - Lisenssi: Lisenssinä oli `GNU GPL-3` ja se löytyi repositorion juuressa olevasta tiedostosta sekä listattuna repositorion About osiossa. GNU GPL3 on avoimen lähdekoodin lisenssi, joka antaa käyttäjille vapauden käyttää, muokata ja jakaa ohjelmistoa(GNU 2023).
    - Tekijä ja vuosi: Tekijänä oli Githubin käyttäjänimi `FredrikAkerlund` ja vuosilukuna 2023 joka kävi ilmi githubin versionhallintaa selaamalla.
    - Riippuvuudet: 
      - Käytössä oli vagrantfile joka loi debian bullseye64 virtuaalikoneita
@@ -131,7 +131,7 @@ Tehtävänä oli etsiä 3-7 keskitetyn hallinnan projektia aikaisempien Palvelin
 
 ##### Palvelinohjelmoinnin-miniprojekti Ohjelmisto ympäristö kuntoon ubuntu 20.04 koneille. (DiviXe 2023)
    - Tarkoitus: Projektin tarkoituksena oli mahdollistaa helposti kehitysympäristön luonti sisältäen tarvittavat ohjelmat.
-   - Lisenssi: Lisenssinä oli `GNU GPL-3` ja se löytyi repositorion juuressa olevasta tiedostosta sekä listattuna repositorion About osiossa
+   - Lisenssi: Lisenssinä oli `GNU GPL-3` ja se löytyi repositorion juuressa olevasta tiedostosta sekä listattuna repositorion About osiossa. GNU GPL3 on avoimen lähdekoodin lisenssi, joka antaa käyttäjille vapauden käyttää, muokata ja jakaa ohjelmistoa(GNU 2023).
    - Tekijä ja vuosi: Tekijänä oli Githubin käyttäjänimi `DiviXe` ja vuosilukuna 2023 joka kävi ilmi githubin versionhallintaa selaamalla.
    - Riippuvuudet: 
      - Ubuntu 20.04
@@ -141,7 +141,7 @@ Tehtävänä oli etsiä 3-7 keskitetyn hallinnan projektia aikaisempien Palvelin
 
 ##### VagrantGoat-miniprojekti (aatuhorelli 2023)
    - Tarkoitus: Projektin tarkoituksena oli luoda valmiiksi konfiguroitu WebGoat tarvittavien ohjelmistojen kanssa. WebGoat on haavoittuvuuksien testaamiseen ja harjoitteluun tarkoitettu ohjelma.
-   - Lisenssi: Lisenssinä oli `GNU GPL-3` ja se löytyi repositorion juuressa olevasta tiedostosta sekä listattuna repositorion About osiossa
+   - Lisenssi: Lisenssinä oli `GNU GPL-3` ja se löytyi repositorion juuressa olevasta tiedostosta sekä listattuna repositorion About osiossa. GNU GPL3 on avoimen lähdekoodin lisenssi, joka antaa käyttäjille vapauden käyttää, muokata ja jakaa ohjelmistoa(GNU 2023).
    - Tekijä ja vuosi: Tekijänä oli Githubin käyttäjänimi `aatuhorelli` ja vuosilukuna 2023 joka kävi ilmi githubin versionhallintaa selaamalla.
    - Riippuvuudet:
      - Vagrantilla luodaan virtuaaliympäristö
@@ -154,7 +154,7 @@ Tehtävänä oli etsiä 3-7 keskitetyn hallinnan projektia aikaisempien Palvelin
 
 ##### Salt-moduuli (RenneJ 2023)
    - Tarkoitus: Projektin tarkoituksena oli luoda moduuli, jonka avulla voidaan asentaa määrätylle minionille postgresql-tietokanta valmiiksi konfiguroituna siten, että siihen voidaan ottaa yhteys lähiverkon sisällä.
-   - Lisenssi: Lisenssinä oli `GNU GPL-3` ja se löytyi repositorion juuressa olevasta tiedostosta sekä listattuna repositorion About osiossa
+   - Lisenssi: Lisenssinä oli `GNU GPL-3` ja se löytyi repositorion juuressa olevasta tiedostosta sekä listattuna repositorion About osiossa.  GNU GPL3 on avoimen lähdekoodin lisenssi, joka antaa käyttäjille vapauden käyttää, muokata ja jakaa ohjelmistoa(GNU 2023).
    - Tekijä ja vuosi: Tekijänä oli Githubin käyttäjänimi `RenneJ` ja vuosilukuna 2023 joka kävi ilmi githubin versionhallintaa selaamalla.
    - Riippuvuudet:
      - Paikallinen käyttöjärjestelmä: Ubuntu 22.04LTS
@@ -239,6 +239,8 @@ aatuhorelli 2023. VagrantGoat-miniprojekti. Luettavissa: https://github.com/aatu
 DiviXe 2023. Palvelinohjelmoinnin-miniprojekti Ohjelmisto ympäristö kuntoon ubuntu 20.04 koneille. Luettavissa: https://github.com/DiviXe/Palvelinohjelmoinnin-miniprojekti/blob/main/README.md. Luettu: 6.5.2024.
 
 FredrikAkerlund 2023. Miniproject. Luettavissa: https://github.com/FredrikAkerlund/Miniproject/blob/main/README.md. Luettu: 3.5.2024.
+
+GNU 2023. GNU General Public License. Luettavissa: https://www.gnu.org/licenses/gpl-3.0.html. Luettu: 6.5.2024.
 
 HashiCorp S.A. Creating a Base Box. Luettavissa: https://developer.hashicorp.com/vagrant/docs/boxes/base. Luettu: 6.5.2024.
 
