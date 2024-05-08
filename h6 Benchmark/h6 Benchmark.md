@@ -85,6 +85,8 @@ Tehtävänä oli asentaa Windowsiin ohjelmia Saltin pkg.installed -funktiolla ja
 
 **Huomiona** se, että tehtävänannossa puhuttiin pkg.installed funktiosta. Asennukset tein `pkg.install` funktiolla ja WMwaren artikkelista saamani ymmärryksen mukaan `pkg.installed` toimii minioniin ja `pkg.install` toimii paikalliseen asennukseen  
 
+**Virheellinen huomio. Päivitetty 8.5.2024.** Oikea komento olisi ollut `salt-call --local state.single pkg.installed winrar`.
+
 ###### Osion lähteet: (WMWare 2024)
 
 ---
