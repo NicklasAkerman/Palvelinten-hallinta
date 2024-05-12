@@ -88,7 +88,7 @@ Aloitin osion tekemällä paikalliselle koneelle virtuaalikoneet helpottaakseni 
    - sudo salt-call --local state.single pkg.installed micro  
    - sudo salt-call --local state.single pkg.installed nginx  
    - sudo salt-call --local state.single pkg.installed chromium  
-6. Tein programs kansion salt kansioon ja loin sinne init.sls tiedoston johon lisäsin onnistuneet asennukset.
+6. Tein programs kansion salt kansioon ja loin sinne init.sls tiedoston johon lisäsin onnistuneet asennukset.  
  ![1](Kuvat/1.png)
 
 7. Lähdin selvittämään, kuinka saan loput asennukset tehtyä ja yksi tapa tähän oli asentaa snap paketinhallintajärjestelmä (Canonical Ltd 2024). Asensin snapin komennolla `sudo apt install snapd -y` ja asennuksen jälkeen kokeilin vielä saako asennuksen suoritettua saltilla komennolla `sudo salt-call --local state.single pkg.installed snapd`  
