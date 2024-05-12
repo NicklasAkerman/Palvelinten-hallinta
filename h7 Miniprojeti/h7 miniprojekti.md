@@ -154,7 +154,7 @@ Vielä oli vaikein osuus jäljellä, eli kuinka saan vagrantilla asennettua virt
     - sudo snap install chromium
     - sudo snap install micro --classic
 
-4. Tein uuden init.sls tiedoston ubuntun bioniccia varten.
+4. Tein uuden init.sls tiedoston ubuntun bioniccia varten.  
 ![3](Kuvat/3.png)
 
 5. ässä kohtaa muutin githubin Master repositoriota lisäämällä programsBionic kansion ja muutin alkuperäisen programs kansion programsBookworm. Molempiin kansioihin on omat init.sls tiedostot, jos vielä keksin miten saan bookwormiin käyttöliittymän. [Tästä pääset katsomaan](https://github.com/NicklasHH/Master/)
@@ -170,10 +170,10 @@ Vielä oli vaikein osuus jäljellä, eli kuinka saan vagrantilla asennettua virt
 3. Avasin toisen terminaalin ja yhdistin Master koneeseen komennolla `ssh masteri@178.62.241.242` ja kun bionic oli asentunut, annoin komennon `sudo salt-key -A` ja hyväksyin avaimen.
 
 4. Annoin Masterilla komennon `sudo salt '*' state.apply programsBionic` tilojen ajamiseksi. Tilojen ajaminen vei noin 4 minuuttia.  
- ![4](kuvat/4.png)
+![4](Kuvat/4.png)
 
 5. Tarkistin vielä erikseen micron ja gitin toiminnan terminaalin kautta, koska niitä ei näkynyt sovellusluettelossa.  
- ![5](kuvat/5.png)
+![5](Kuvat/5.png)
 
 
 ## Lähteet
