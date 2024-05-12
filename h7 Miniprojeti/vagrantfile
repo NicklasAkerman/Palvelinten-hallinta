@@ -1,0 +1,46 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# Copyright 2014-2023 Tero Karvinen http://TeroKarvinen.com
+
+Vagrant.configure("2") do |config|
+    config.vm.box = "ubuntu/bionic64"
+  
+    config.vm.provider :virtualbox do |v|
+      v.gui = true
+      v.memory = 4000
+    end
+  
+    config.vm.define "programmer" do |programmer|
+      programmer.vm.hostname = "programmer"
+    end
+
+    # Currently "ubuntu/bionic64" on VirtualBox requires `type: "virtualbox"`
+    # to make synced folder works.
+    config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
+  
+    # Update repositories
+    config.vm.provision :shell, inline: "sudo apt update -y"
+    # Upgrade installed packages
+    config.vm.provision :shell, inline: "sudo apt upgrade -y"
+    # Install curl
+    config.vm.provision :shell, inline: "apt-get -qy install curl"
+
+    # Install salt
+    config.vm.provision :shell, inline: "sudo mkdir /etc/apt/keyrings"  
+    config.vm.provision :shell, inline: "sudo curl -fsSL -o /etc/apt/keyrings/salt-archive-keyring-2023.gpg https://repo.saltproject.io/salt/py3/debian/12/amd64/SALT-PROJECT-GPG-PUBKEY-2023.gpg"  
+    config.vm.provision :shell, inline: 'echo "deb [signed-by=/etc/apt/keyrings/salt-archive-keyring-2023.gpg arch=amd64] https://repo.saltproject.io/salt/py3/debian/12/amd64/latest bookworm main" | sudo tee /etc/apt/sources.list.d/salt.list'
+    config.vm.provision :shell, inline: "sudo apt-get update" 
+    config.vm.provision :shell, inline: "sudo apt-get -qy install salt-minion" 
+    config.vm.provision :shell, inline: 'echo "master: 178.62.241.242" >/etc/salt/minion'
+    config.vm.provision :shell, inline: "sudo systemctl restart salt-minion" 
+
+    # Add desktop environment
+    config.vm.provision :shell, inline: "sudo apt install -y --no-install-recommends ubuntu-desktop"
+    config.vm.provision :shell, inline: "sudo apt install -y --no-install-recommends virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11"
+  
+    # Set language, Locale and Time
+    config.vm.provision :shell, inline: "sudo timedatectl set-timezone Europe/Helsinki"
+
+    # Restart
+    config.vm.provision :shell, inline: "sudo shutdown -r now"
+  end
