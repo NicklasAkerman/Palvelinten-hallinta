@@ -115,15 +115,15 @@ Menin polkuun `srv` ja annoin komennon `sudo git clone https://github.com/Nickla
 
 ## Ensimmäinen testaus
 Käynnistin olemassaolevan Debian12 virtuaalikoneen, jonne annoin komennot
-  >sudo apt-get update
-  >sudo apt-get -qy install curl
-  >mkdir /etc/apt/keyrings
-  >sudo curl -fsSL -o /etc/apt/keyrings/salt-archive-keyring-2023.gpg https://repo.saltproject.io/salt/py3/debian/12/amd64/SALT-PROJECT-GPG-PUBKEY-2023.gpg
-  >echo "deb [signed-by=/etc/apt/keyrings/salt-archive-keyring-2023.gpg arch=amd64] https://repo.saltproject.io/salt/py3/debian/12/amd64/latest bookworm main" | sudo tee /etc/apt/sources.list.d/salt.list
-  >sudo apt-get update
-  >sudo apt-get -qy install salt-minion
-  >echo "master: 178.62.241.242" | sudo tee /etc/salt/minion
-  >sudo systemctl enable salt-minion && sudo systemctl start salt-minion
+  >sudo apt-get update  
+  >sudo apt-get -qy install curl  
+  >mkdir /etc/apt/keyrings  
+  >sudo curl -fsSL -o /etc/apt/keyrings/salt-archive-keyring-2023.gpg https://repo.saltproject.io/salt/py3/debian/12/amd64/SALT-PROJECT-GPG-PUBKEY-2023.gpg  
+  >echo "deb [signed-by=/etc/apt/keyrings/salt-archive-keyring-2023.gpg arch=amd64] https://repo.saltproject.io/salt/py3/debian/12/amd64/latest bookworm main" | sudo tee /etc/apt/sources.list.d/salt.list  
+  >sudo apt-get update  
+  >sudo apt-get -qy install salt-minion  
+  >echo "master: 178.62.241.242" | sudo tee /etc/salt/minion  
+  >sudo systemctl enable salt-minion && sudo systemctl start salt-minion  
 
   - Koska en nähnyt komennolla `sudo salt-key -A` pyyntöjä, avasin masterin portit komennoin `sudo ufw allow 4505/tcp` ja `sudo ufw allow 4506/tcp` ja sain sen jälkeen avain pyynnöt läpi (SaltStack 2016). Tämän jälkeen komento `sudo salt '*' state.apply programs` lähti rullaamaan. Lopputuloksena 9 onnistunutta joista 7 muutettu.
 
@@ -135,15 +135,15 @@ Sain tehtyä [vagrantfilen minionille](vagrantfile1minion) niin, että minionill
 Vielä oli vaikein osuus jäljellä, eli kuinka saan vagrantilla asennettua virtuaalikoneen, jossa on toimiva työpöytä. Löysin videon ja jossa käytettiin ubuntu/bionic64 (Techmaker Studio 2021) joten lähdin testaamaan sitä löytämäni pohjan(niw s.a.) päälle selvittääkseni mitä muutoksia tulee tehdä, jotta tilat saataisiin ajettua.
 
 1. Kopion koko vagrantfilen ja testasin ajaa luodulle virtuaalikoneelle saltin minion komennot:
-    >sudo apt-get update
-    >sudo apt-get -qy install curl
-    >sudo mkdir /etc/apt/keyrings
-    >sudo curl -fsSL -o /etc/apt/keyrings/salt-archive-keyring-2023.gpg https://repo.saltproject.io/salt/py3/debian/12/>4/SALT-PROJECT-GPG-PUBKEY-2023.gpg
-    >echo "deb [signed-by=/etc/apt/keyrings/salt-archive-keyring-2023.gpg arch=amd64] https://repo.saltproject.io/salt/py3/debian/12/amd64/latest bookworm main" | sudo tee /etc/apt/sources.list.d/salt.list
-    >sudo apt-get update
-    >sudo apt-get -qy install salt-minion
-    >sudoedit /etc/salt/minion <-- tänne lisäsin master osioon ip osoitteen
-    >sudo systemctl restart salt-minion
+    >sudo apt-get update  
+    >sudo apt-get -qy install curl  
+    >sudo mkdir /etc/apt/keyrings  
+    >sudo curl -fsSL -o /etc/apt/keyrings/salt-archive-keyring-2023.gpg https://repo.saltproject.io/salt/py3/debian/12/>4/SALT-PROJECT-GPG-PUBKEY-2023.gpg  
+    >echo "deb [signed-by=/etc/apt/keyrings/salt-archive-keyring-2023.gpg arch=amd64] https://repo.saltproject.io/salt/py3/debian/12/amd64/latest bookworm main" | sudo tee /etc/apt/sources.list.d/salt.list  
+    >sudo apt-get update  
+    >sudo apt-get -qy install salt-minion  
+    >sudoedit /etc/salt/minion <-- tänne lisäsin master osioon ip osoitteen  
+    >sudo systemctl restart salt-minion  
 
 2. Tämän jälkeen hyväksyin masterilla avaimen ja ajoin tilat.
     - micro ei asentunut
