@@ -155,7 +155,7 @@ Vielä oli vaikein osuus jäljellä, eli kuinka saan vagrantilla asennettua virt
     - sudo snap install micro --classic
 
 4. Tein uuden init.sls tiedoston ubuntun bioniccia varten.
-  ![3](kuvat/3.png)
+![3](Kuvat/3.png)
 
 5. ässä kohtaa muutin githubin Master repositoriota lisäämällä programsBionic kansion ja muutin alkuperäisen programs kansion programsBookworm. Molempiin kansioihin on omat init.sls tiedostot, jos vielä keksin miten saan bookwormiin käyttöliittymän. [Tästä pääset katsomaan](https://github.com/NicklasHH/Master/)
 
