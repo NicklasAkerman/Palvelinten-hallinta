@@ -68,7 +68,7 @@ Lukitsin turvallisuus syistä rootilla sisäänkirjautumisen antamalla komennon 
     5.3.1 Testasin komennolla `curl google.com`  
     5.4 salt masterin asennus  
 	  5.4.1 `sudo curl -fsSL -o /etc/apt/keyrings/salt-archive-keyring-2023.gpg https://repo.saltproject.io/salt/py3/debian/12/amd64/SALT-PROJECT-GPG-PUBKEY-2023.gpg`  
-    5.4.2 `echo "deb [signed-by=/etc/apt/keyrings/salt-archive-keyring-2023.gpg arch=amd64] https://repo.saltproject.io/salt/py3/debian/12/amd64/latest bookworm main" | sudo tee /etc/apt/sources.list.d/salt.list`
+    5.4.2 `echo "deb [signed-by=/etc/apt/keyrings/salt-archive-keyring-2023.gpg arch=amd64] https://repo.saltproject.io/salt/py3/debian/12/amd64/latest bookworm main" | sudo tee /etc/apt/sources.list.d/salt.list`  
     5.4.3 `sudo apt-get update`  
     5.4.4 `sudo apt-get install salt-master`  
     5.4.5 `sudo systemctl enable salt-master && sudo systemctl start salt-master`  
