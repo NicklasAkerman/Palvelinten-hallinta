@@ -204,7 +204,7 @@ Määritin vielä etusivun Nginxille. Tein osion tyhjällä paikallisella virtua
   sudo systemctl status nginx  
   mkdir public_html; cd public_html; micro index.html #Kirjoitin testisivu  
   sudoedit /etc/nginx/sites-available/testisivu  
-![nginx1](kuvat/nginx1.png)  
+![nginx1](Kuvat/nginx1.png) 
   sudo ln -s /etc/nginx/sites-available/testisivu /etc/nginx/sites-enabled/  
   sudo rm /etc/nginx/sites-enabled/default  
   sudo systemctl restart nginx  
@@ -268,7 +268,7 @@ Tämän jälkeen hyväksyin masterilla avaimen komennolla `sudo salt-key -A` ja 
 Ensin avasin chromiumin ja kirjoitin localhost  
 ![local1](kuvat/local1.png)
 
-muokkasin index.html tiedostoa ja päivitin sivun  
+Muokkasin index.html tiedostoa ja päivitin sivun  
 ![local2](kuvat/local2.png)
 
 
