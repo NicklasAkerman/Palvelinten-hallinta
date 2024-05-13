@@ -266,10 +266,10 @@ Lopuksi testasin toiminnan kirjautumalla ssh:n avulla masterille, navigoin polku
 Tämän jälkeen hyväksyin masterilla avaimen komennolla `sudo salt-key -A` ja testasin yhteyden `sudo salt '*' test.ping` ja lopuksi ajoin tilan komennolla `sudo salt '*' state.apply programsBionic`
 
 Ensin avasin chromiumin ja kirjoitin localhost  
-![local1](kuvat/local1.png)
+![local1](Kuvat/local1.png) 
 
 Muokkasin index.html tiedostoa ja päivitin sivun  
-![local2](kuvat/local2.png)
+![local2](Kuvat/local2.png) 
 
 
 ## Lähteet
