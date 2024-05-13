@@ -204,7 +204,7 @@ Määritin vielä etusivun Nginxille. Tein osion tyhjällä paikallisella virtua
   sudo systemctl status nginx  
   mkdir public_html; cd public_html; micro index.html #Kirjoitin testisivu  
   sudoedit /etc/nginx/sites-available/testisivu  
-  ![nginx1](kuvat/nginx1.png)  
+![nginx1](kuvat/nginx1.png)  
   sudo ln -s /etc/nginx/sites-available/testisivu /etc/nginx/sites-enabled/  
   sudo rm /etc/nginx/sites-enabled/default  
   sudo systemctl restart nginx  
@@ -213,7 +213,7 @@ Määritin vielä etusivun Nginxille. Tein osion tyhjällä paikallisella virtua
   sudo cp /etc/nginx/sites-available/testisivu /srv/salt/palvelin  
   sudo cp -r /home/vagrant/public_html/index.html /srv/salt/palvelin  
   sudoedit /srv/salt/palvelin/init.sls  
-  ![nginx2](kuvat/nginx2.png)
+![nginx2](kuvat/nginx2.png)
 
   testaus: sudo salt-call --local state.apply palvelin  
 
