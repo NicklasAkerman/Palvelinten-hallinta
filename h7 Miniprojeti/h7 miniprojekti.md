@@ -3,15 +3,23 @@ Käyn tässä raportissa läpi miniprojektin rakentamisen ja linkitän tähän r
 
 Projektin tarkoituksena on luoda Digital Oceanin pilveen virtuaalinen Master kone, jonka avulla saadaan paikallisille minion -koneille ladattua halutut ohjelmistokehityksen tarpeet helposti, jolloin voin jokaiselle kehitysprojektille helposti luoda omat virtuaalikoneet samoilla asetuksilla ja ohjelmistoilla. Havaitut tarpeelliset ohjelmat ohjelmistokehitystä ajatellen ovat: Git, Gimp, Micro, Nginx, Chromium, VScode, Postman ja Eclipse.
 
+---
+
 ## Lopullinen projekti
 Itse lopullinen projektikansio esittelyineen löytyy [täältä.](https://github.com/NicklasHH/Miniprojekti) Tämä raportti on kirjoitettu, jotta voin palata takaisin ajassa tämän projektin rakennusvaiheeseen. 
 
 
+---
+
 ## Pohjatiedot
 Pohjatietoihin ei tulla antamaan tässä raportissa asennusohjeita. Paikalliselle Windows koneelle on asennettu projektissa tarvittavat Virtualbox, Git sekä Vagrant. Master toimii Digital Oceanissa Linuxilla. Masteria ajetaan SSH yhteydellä paikalliselta Windows koneelta. Digital Oceanilla on jo paikallisen koneen ssh avain tallennettuna.
 
+---
+
 ## Muuta huomioitavaa
 Koska Master kone on toteutettu pilveen, ei projektin toistaminen tule olemaan pelkkää tiedostojen kopioimista. Pienillä muutoksilla lopputulos voidaan toistaa myös paikallisella tietokoneella, mutta siihen en artikkelissa anna erikseen ohjeita.
+
+---
 
 ## Fyysinen tietokone
 
@@ -24,7 +32,7 @@ Koska Master kone on toteutettu pilveen, ei projektin toistaminen tule olemaan p
 - 2 x 8GB Ram
 - 1000 GB NVMe m.2 SSD
   - Josta vapaana +700Gb
-- Viimeisimmät päivitykset ja ajurit asennettuna 18.4.2024
+- Viimeisimmät päivitykset ja ajurit asennettuna 10.5.2024
 
 ---
 
@@ -59,7 +67,7 @@ Ennen osion tekoa, luin vanhan raporttini koskien virtuaalikoneen tekoa Digital 
 4. ROOT lukitseminen
 Lukitsin turvallisuus syistä rootilla sisäänkirjautumisen antamalla komennon `sudo usermod --lock root` ja komennolla `sudoedit /etc/ssh/sshd_config` muokkasin kohtaan *PermitRootLogin:* **no**. Tämän jälkeen testasin vielä tehdyn osion ja yritin ottaa ssh yhteyden komennolla `ssh root@178.62.241.242` joka ei enää toiminut.
 
-5. Asennuksia Masteri pilvikoneelle
+5. Asennuksia Masteri pilvikoneelle  
     5.1 `sudo apt-get update`  
     5.2 `sudo apt install micro`  
     5.2.1 `echo 'export EDITOR=micro' >> ~/.bashrc` 
@@ -74,6 +82,7 @@ Lukitsin turvallisuus syistä rootilla sisäänkirjautumisen antamalla komennon 
     5.4.5 `sudo systemctl enable salt-master && sudo systemctl start salt-master`  
     5.4.6 testaus komennolla `sudo salt-call --local grains.items`  
 
+---
 
 ## Paikallisen koneen master
 Aloitin osion tekemällä paikalliselle koneelle virtuaalikoneet helpottaakseni tarvittaessa uusien virtuaalikoneiden luontia, joten avasin terminaalin ja tein kansion masteri, jossa annoin komennon `micro vagrantfile` ja kopioin sinne sisällön tiedostosta [vagrantfilekehitykseen](vagrantfilekehitykseen)
@@ -109,9 +118,13 @@ Aloitin osion tekemällä paikalliselle koneelle virtuaalikoneet helpottaakseni 
 11. Tässä kohtaa tein githubiin oman repositorion masterin tiedostoille. Tein komennolla `ssh-keygen` avaimen ja kopioin sen julkisen osan komennosta ` cat /home/vagrant/.ssh/id_rsa.pub` ja lisäsin sen GitHubiin jonka jälkeen kopioin repositorion kotihakemistoon komennolla `git clone git@github.com:NicklasHH/Master.git`. Kopioin lopuksi vielä tehdn salt tiedostoni tähän kansioon komennolla `cp -r /srv/salt/ /home/vagrant/Master` jonka jälkeen laitoin muutokset githubiin. [Tästä näet kyseisen commitin](https://github.com/NicklasHH/Master/commit/e2830f0ce177bd81f235e88240b313efbbdabda1) 
 
 
+---
+
 ## Masterille salt githubista
 Asensin Masterille gitin komennolla `sudo salt-call --local state.single pkg.installed git` jonka jälkeen tein ja lisäsin ssh avaimen githubiin.
 Menin polkuun `srv` ja annoin komennon `sudo git clone https://github.com/NicklasHH/Master.git` joka kloonasi githubista masterille tekemäni repositoryn. Menin Master kansioon, jossa siirsin salt tiedoston komennolla `sudo mv salt ../` ja lopuksi poistin alkuperäisen Master kansion komennolla `sudo rm -r Master`. Tulen lopulliseen esitystiedostoon vaihtamaan tätä kansiorakennetta.
+
+---
 
 ## Ensimmäinen testaus
 Käynnistin olemassaolevan Debian12 virtuaalikoneen, jonne annoin komennot
@@ -126,6 +139,8 @@ Käynnistin olemassaolevan Debian12 virtuaalikoneen, jonne annoin komennot
   >sudo systemctl enable salt-minion && sudo systemctl start salt-minion  
 
   - Koska en nähnyt komennolla `sudo salt-key -A` pyyntöjä, avasin masterin portit komennoin `sudo ufw allow 4505/tcp` ja `sudo ufw allow 4506/tcp` ja sain sen jälkeen avain pyynnöt läpi (SaltStack 2016). Tämän jälkeen komento `sudo salt '*' state.apply programs` lähti rullaamaan. Lopputuloksena 9 onnistunutta joista 7 muutettu.
+
+---
 
 ## Vagranfile
 Seuraavaksi aloin rakentamaan lopullista vagrantfileä ja koska tarkoitus on käyttää bookwormia, jouduin asentamaan saltin eritavalla. Lisäksi vagrantfileen tuli lisätä masterille oikea IP osoite ja master_port `/etc/salt/minion` tiedostoon. Lisäksi tarkoituksena oli saada toimimaan asennetun virtuaalikoneen työpöytäversio, joka oli täysin uutta minulle.
@@ -162,6 +177,8 @@ Vielä oli vaikein osuus jäljellä, eli kuinka saan vagrantilla asennettua virt
 6. Seuraavaksi oli vielä tehtävä bionicin vagrantfileen asetukset, joilla siihen asentuu automaattisesti salt-minion. käynnistyksen jälkeen annoin komennon `sudo systemctl restart salt-minion` koska avainta ei näkynyt masterilla. Tämän jälkeen ajoin tilat komennolla `sudo salt '*' state.apply programsBionic`. 
 
 
+---
+
 ## Viimeinen testaus
 1. Loin työpöydälle kansion `BionicTest` ja kopioin sinne vagrantfilen
 
@@ -174,6 +191,8 @@ Vielä oli vaikein osuus jäljellä, eli kuinka saan vagrantilla asennettua virt
 
 5. Tarkistin vielä erikseen micron ja gitin toiminnan terminaalin kautta, koska niitä ei näkynyt sovellusluettelossa.  
 ![5](Kuvat/5.png)
+
+Yritin vielä asettaa kielen suomeksi, mutta se olikin haastavampi homma. Lisäsin kielipaketin asennuksen vagrantfileen (Komentona oli `sudo apt-get install language-pack-fi`) jonka jälkeen sain vaihdettua kielen, mutta en tiennyt minne se tallennetaan. CSI kerava ei tuottanut tulosta. Esimerkki yrityksestä `sudo find / $HOME -printf '%T+ %p\n' | sort -n | grep lang*`.
 
 
 ## Lähteet
