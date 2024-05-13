@@ -195,6 +195,83 @@ Vielä oli vaikein osuus jäljellä, eli kuinka saan vagrantilla asennettua virt
 Yritin vielä asettaa kielen suomeksi, mutta se olikin haastavampi homma. Lisäsin kielipaketin asennuksen vagrantfileen (Komentona oli `sudo apt-get install language-pack-fi`) jonka jälkeen sain vaihdettua kielen, mutta en tiennyt minne se tallennetaan. CSI kerava ei tuottanut tulosta. Esimerkki yrityksestä `sudo find / $HOME -printf '%T+ %p\n' | sort -n | grep lang*`.
 
 
+## Nginx etusivu
+Määritin vielä etusivun Nginxille. Tein osion tyhjällä paikallisella virtuaalikoneella, jonka jälkeen oli helppo muokata tiedostot ja lisätä ne salt repositoryyn.
+
+  >sudo apt-get update  
+  sudo apt-get install micro curl nginx  
+  export EDITOR='micro'  
+  sudo systemctl status nginx  
+  mkdir public_html; cd public_html; micro index.html #Kirjoitin testisivu  
+  sudoedit /etc/nginx/sites-available/testisivu  
+  ![nginx1](kuvat/nginx1.png)  
+  sudo ln -s /etc/nginx/sites-available/testisivu /etc/nginx/sites-enabled/  
+  sudo rm /etc/nginx/sites-enabled/default  
+  sudo systemctl restart nginx  
+  curl localhost #Palautti testisivu  
+  sudo mkdir -p /srv/salt/palvelin  
+  sudo cp /etc/nginx/sites-available/testisivu /srv/salt/palvelin  
+  sudo cp -r /home/vagrant/public_html/index.html /srv/salt/palvelin  
+  sudoedit /srv/salt/palvelin/init.sls  
+  ![nginx2](kuvat/nginx2.png)
+
+  testaus: sudo salt-call --local state.apply palvelin  
+
+  >sudo salt-key -A  
+  sudo salt 't001' test.ping  
+
+  >sudo apt-get update   
+  sudo apt-get install curl    
+  curl localhost #Palautti virheen
+
+  >sudo salt 't001' state.apply palvelin  
+  nano index.html #muokkaus  
+  curl localhost #Palautti muokatun version  
+
+**Githubiin muokattu init.sls**
+Lisäsin programsBionic kansion init.sls tiedostoon seuraavat rivit:
+
+>/etc/nginx/sites-available/testisivu:
+  file.managed:
+    - source: "salt://programsBionic/testisivu"
+    - watch_in:
+      - service: "nginx.service"
+
+>/etc/nginx/sites-enabled/default:
+  file.absent:
+    - watch_in:
+      - service: "nginx.service"
+
+>/etc/nginx/sites-enabled/testisivu:
+  file.symlink:
+    - target: "../sites-available/testisivu"
+    - watch_in:
+      - service: "nginx.service"
+
+>/home/vagrant/public_html/index.html:
+  file.managed:
+    - source: "salt://programsBionic/index.html"
+    - user: vagrant
+    - group: vagrant
+    - makedirs: True
+    - Replace: False
+
+>nginx.service:
+  service.running
+
+Lisäksi tein programsBionic kansioon index.html tiedoston sekä testisivu tiedoston. Muutokset näet [tästä.](https://github.com/NicklasHH/salt/commit/7cedca89f9a6e4ee906905bc35e9e0cbc87342c1)
+
+Lopuksi testasin toiminnan kirjautumalla ssh:n avulla masterille, navigoin polkuun /srv/salt ja ajoin komennon sudo git pull. Tein uuden paikallisen virtuaalikoneen työpöydälle luomalla siihen tyhjän tiedoston, lisäämällä sinne vagrantfile tiedoston ja annoin terminaalissa komennon `vagrant up`
+
+Tämän jälkeen hyväksyin masterilla avaimen komennolla `sudo salt-key -A` ja testasin yhteyden `sudo salt '*' test.ping` ja lopuksi ajoin tilan komennolla `sudo salt '*' state.apply programsBionic`
+
+Ensin avasin chromiumin ja kirjoitin localhost  
+![local1](kuvat/local1.png)
+
+muokkasin index.html tiedostoa ja päivitin sivun  
+![local2](kuvat/local2.png)
+
+
 ## Lähteet
 Canonical Ltd 2024. Install code
 on Ubuntu. Luettavissa: https://snapcraft.io/install/code/ubuntu. Luettu: 11.5.2024
