@@ -228,36 +228,36 @@ Määritin vielä etusivun Nginxille. Tein osion tyhjällä paikallisella virtua
   nano index.html #muokkaus  
   curl localhost #Palautti muokatun version  
 
-**Githubiin muokattu init.sls**
+**Githubiin muokattu init.sls**  
 Lisäsin programsBionic kansion init.sls tiedostoon seuraavat rivit:
 
->/etc/nginx/sites-available/testisivu:
-  file.managed:
-    - source: "salt://programsBionic/testisivu"
-    - watch_in:
-      - service: "nginx.service"
+>/etc/nginx/sites-available/testisivu:  
+  file.managed:  
+    - source: "salt://programsBionic/testisivu"  
+    - watch_in:  
+      - service: "nginx.service"  
 
->/etc/nginx/sites-enabled/default:
-  file.absent:
-    - watch_in:
-      - service: "nginx.service"
+>/etc/nginx/sites-enabled/default:  
+  file.absent:  
+    - watch_in:  
+      - service: "nginx.service"  
 
->/etc/nginx/sites-enabled/testisivu:
-  file.symlink:
-    - target: "../sites-available/testisivu"
-    - watch_in:
-      - service: "nginx.service"
+>/etc/nginx/sites-enabled/testisivu:  
+  file.symlink:  
+    - target: "../sites-available/testisivu"  
+    - watch_in:  
+      - service: "nginx.service"  
 
->/home/vagrant/public_html/index.html:
-  file.managed:
-    - source: "salt://programsBionic/index.html"
-    - user: vagrant
-    - group: vagrant
-    - makedirs: True
-    - Replace: False
+>/home/vagrant/public_html/index.html:  
+  file.managed:  
+    - source: "salt://programsBionic/index.html"  
+    - user: vagrant  
+    - group: vagrant  
+    - makedirs: True  
+    - Replace: False  
 
->nginx.service:
-  service.running
+>nginx.service:  
+  service.running  
 
 Lisäksi tein programsBionic kansioon index.html tiedoston sekä testisivu tiedoston. Muutokset näet [tästä.](https://github.com/NicklasHH/salt/commit/7cedca89f9a6e4ee906905bc35e9e0cbc87342c1)
 
