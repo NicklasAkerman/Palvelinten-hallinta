@@ -204,7 +204,7 @@ Määritin vielä etusivun Nginxille. Tein osion tyhjällä paikallisella virtua
   sudo systemctl status nginx  
   mkdir public_html; cd public_html; micro index.html #Kirjoitin testisivu  
   sudoedit /etc/nginx/sites-available/testisivu  
-![nginx1](Kuvat/nginx1.png) 
+![nginx1](Kuvat/nginx1.png)   
   sudo ln -s /etc/nginx/sites-available/testisivu /etc/nginx/sites-enabled/  
   sudo rm /etc/nginx/sites-enabled/default  
   sudo systemctl restart nginx  
