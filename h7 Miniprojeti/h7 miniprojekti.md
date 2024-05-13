@@ -213,7 +213,7 @@ Määritin vielä etusivun Nginxille. Tein osion tyhjällä paikallisella virtua
   sudo cp /etc/nginx/sites-available/testisivu /srv/salt/palvelin  
   sudo cp -r /home/vagrant/public_html/index.html /srv/salt/palvelin  
   sudoedit /srv/salt/palvelin/init.sls  
-![nginx2](kuvat/nginx2.png)
+![nginx2](Kuvat/nginx2.png) 
 
   testaus: sudo salt-call --local state.apply palvelin  
 
